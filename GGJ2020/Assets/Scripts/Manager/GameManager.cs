@@ -7,10 +7,10 @@ namespace Manager
     {
         [SerializeField] private GameObject golemPrefab = null;
         private List<GameObject> golems = null;
-    
-    void Start()
-    {
-        golems = new List<GameObject>();
+
+        void Start()
+        {
+            golems = new List<GameObject>();
 
             for (int i = 0; i < 5; i++)
             {
@@ -19,13 +19,14 @@ namespace Manager
             }
         }
 
-    void Update()
-    {
-        
+        void Update()
+        {
+
         }
 
-    public List<GameObject> GetGolems()
-    {
-        return golems;
+        public List<GameObject> GetGolems()
+        {
+            return golems;
+        }
     }
 }

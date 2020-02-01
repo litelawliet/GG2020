@@ -8,7 +8,7 @@ public class Canon : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private float range = 50f;
     [SerializeField] private Animator canonAnim;
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private Manager.GameManager gameManager;
     private bool recovery;
     private float timer;
     private int cooldown;
