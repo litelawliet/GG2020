@@ -10,12 +10,18 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     private Transform playerBody = null;
 
+    [SerializeField] private Texture2D mouseCursorTexture;
+    [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
+    private Vector2 _hotSpot = Vector2.zero;
+    
     private float xRotation = 0.0f;
     
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(mouseCursorTexture, _hotSpot, cursorMode);
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -30,6 +36,5 @@ public class MouseLook : MonoBehaviour
         
         transform.localRotation = Quaternion.Euler(xRotation, 0.0f, 0.0f);
         playerBody.Rotate(Vector3.up * mouseX);
-
     }
 }

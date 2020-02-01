@@ -96,7 +96,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ResetFOV()
+
+    public bool IsGrounded()
+    {
+        return _isGrounded;
+    }
+    public void ResetFOV()
     {
         _camera.fieldOfView = initialFOV;
     }
