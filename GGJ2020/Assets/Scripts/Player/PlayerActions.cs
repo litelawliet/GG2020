@@ -47,14 +47,15 @@ namespace Player
                             _hit.transform.gameObject.SetActive(false);
                             _isHoldingGolemCore = true;
                         }
-                        else
+                        
+                        if (_isInPreview && _isHoldingGolemCore)
                         {
                             _hit.transform.gameObject.SetActive(false);
                             _isInPreview = false;
                         }
                     }
 
-                    if (_leftClickPressed && _isInPreview)
+                    if (_leftClickPressed && _isHoldingGolemCore && _isInPreview)
                     {
                         trapToDrop.transform.position = _hit.point;
                         _isInPreview = false;
