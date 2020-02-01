@@ -8,10 +8,9 @@ namespace Manager
         [SerializeField] private GameObject golemPrefab = null;
         private List<GameObject> golems = null;
     
-        // Start is called before the first frame update
-        void Start()
-        {
-            golems = new List<GameObject>();
+    void Start()
+    {
+        golems = new List<GameObject>();
 
             for (int i = 0; i < 5; i++)
             {
@@ -20,15 +19,13 @@ namespace Manager
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+    void Update()
+    {
         
         }
 
-        List<GameObject> GetGolems()
-        {
-            return golems;
-        }
+    public List<GameObject> GetGolems()
+    {
+        return golems;
     }
 }
