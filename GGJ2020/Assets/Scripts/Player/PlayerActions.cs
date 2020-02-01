@@ -51,7 +51,7 @@ namespace Player
 
             if (_raycastExist)
             {
-                if (_hit.transform.tag.Equals("Pickable"))
+                if (_hit.transform.gameObject.CompareTag("Pickable"))
                 {
                     if (_usePressed)
                     {
@@ -78,7 +78,7 @@ namespace Player
                     }
                 }
 
-                if (_hit.transform.tag.Equals("Ground"))
+                if (_hit.transform.gameObject.CompareTag("Ground"))
                 {
                     if (trapToDrop != null)
                         trapToDrop.transform.position = _hit.point;

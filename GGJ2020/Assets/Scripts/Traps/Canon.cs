@@ -7,8 +7,10 @@ public class Canon : MonoBehaviour
     [SerializeField] private GameObject target = null;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float range = 50f;
+    [SerializeField] private float rotationSpeed = 10.0f;
     [SerializeField] private Animator canonAnim;
     [SerializeField] private Manager.GameManager gameManager;
+    private Quaternion m_lookRotation;
     private bool recovery;
     private float timer;
     private int cooldown;
@@ -22,8 +24,13 @@ public class Canon : MonoBehaviour
     {
         if (target != null && Vector3.Distance(transform.position, target.transform.position) <= range)
         {
-            float angle = Vector3.Angle(transform.position, target.transform.position);
-            transform.Rotate(Vector3.up, angle);
+            m_lookRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+
+            if (transform.rotation != m_lookRotation)
+            {
+                transform.rotation =
+                    Quaternion.RotateTowards(transform.rotation, m_lookRotation, rotationSpeed * Time.deltaTime);
+            }
             if (!recovery)
             {
                 Shoot();
