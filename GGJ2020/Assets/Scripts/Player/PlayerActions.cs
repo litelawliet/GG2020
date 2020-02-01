@@ -1,69 +1,105 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.XR;
 
-public class PlayerActions : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private GameObject trapToDrop = null;
-    [SerializeField] private float distanceToPick = 3.5f;
-
-    private RaycastHit _hit;
-    private Camera _camera;
-    private bool _isHoldingGolemCore = false;
-    private bool _isInPreview = false;
-
-    private void Start()
+    public class PlayerActions : MonoBehaviour
     {
-        _camera = GetComponentInChildren<Camera>();
-    }
+        [SerializeField] private GameObject trapToDrop = null;
+        [SerializeField] private float distanceToPick = 3.5f;
 
-    private void Update()
-    {
-        if (_camera != null)
+        private RaycastHit _hit;
+        private Camera _camera;
+        private bool _isHoldingGolemCore = false;
+        private bool _isInPreview = false;
+
+        private bool _usePressed = false;
+        private bool _leftClickPressed = false;
+        private bool _raycastExist = false;
+
+        private void Start()
         {
-            Ray cameraToCursorRay = _camera.ScreenPointToRay(Input.mousePosition);
+            _camera = GetComponentInChildren<Camera>();
+        }
 
-            //if(Debug.isDebugBuild)
-            Debug.DrawRay(transform.position, cameraToCursorRay.direction * distanceToPick, Color.red);
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.F))
+                _usePressed = false;
+            else if (Input.GetKeyDown(KeyCode.F))
+                _usePressed = true;
 
-            if (Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
-                distanceToPick))
+            if (Input.GetMouseButtonUp(0))
+                _leftClickPressed = false;
+            else if (Input.GetMouseButtonDown(0))
+                _leftClickPressed = true;
+
+
+            if (_raycastExist)
             {
                 if (_hit.transform.tag.Equals("Pickable"))
                 {
-                    if (!_isHoldingGolemCore && Input.GetKeyDown(KeyCode.F))
+                    if (_usePressed)
                     {
-                        trapToDrop = _hit.transform.gameObject;
-                        _hit.transform.gameObject.SetActive(false);
-                        _isHoldingGolemCore = true;
+                        if (!_isHoldingGolemCore)
+                        {
+                            trapToDrop = _hit.transform.gameObject;
+                            _hit.transform.gameObject.SetActive(false);
+                            _isHoldingGolemCore = true;
+                        }
+                        else
+                        {
+                            _hit.transform.gameObject.SetActive(false);
+                            _isInPreview = false;
+                        }
+                    }
+
+                    if (_leftClickPressed && _isInPreview)
+                    {
+                        trapToDrop.transform.position = _hit.point;
+                        _isInPreview = false;
+                        _isHoldingGolemCore = false;
+                        trapToDrop = null;
                     }
                 }
-                else if (_hit.transform.tag.Equals("Ground"))
+
+                if (_hit.transform.tag.Equals("Ground"))
                 {
-                    // We can put the core here and construct a trap
-                    if (!_isInPreview)
+                    if (trapToDrop != null)
+                        trapToDrop.transform.position = _hit.point;
+
+                    if (_usePressed)
                     {
-                        if (_isHoldingGolemCore && Input.GetKeyDown(KeyCode.F))
+                        if (_isHoldingGolemCore)
                         {
                             if (trapToDrop != null)
-                            {
-                                // Find hitpoint from where to place the trap
-                                trapToDrop.transform.position = _hit.point;
-                                if (trapToDrop.activeSelf == false)
-                                    trapToDrop.SetActive(true);
-                            }
-
-
+                                trapToDrop.SetActive(true);
                             _isInPreview = true;
                         }
                     }
-                    else
+
+                    if (_leftClickPressed)
                     {
-                        //if ()
+                        if (_isInPreview)
+                        {
+                            _isInPreview = false;
+                            _isHoldingGolemCore = false;
+                        }
                     }
                 }
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (_camera != null)
+            {
+                Ray cameraToCursorRay = _camera.ScreenPointToRay(Input.mousePosition);
+
+                Debug.DrawRay(transform.position, cameraToCursorRay.direction * distanceToPick, Color.red);
+
+                _raycastExist = Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
+                    distanceToPick);
             }
         }
     }
