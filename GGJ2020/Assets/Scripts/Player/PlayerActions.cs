@@ -15,6 +15,7 @@ namespace Player
 
         private bool _usePressed = false;
         private bool _leftClickPressed = false;
+        private bool _rightClickPressed = false;
         private bool _raycastExist = false;
 
         private void Start()
@@ -33,7 +34,11 @@ namespace Player
                 _leftClickPressed = false;
             else if (Input.GetMouseButtonDown(0))
                 _leftClickPressed = true;
-
+            
+            if (Input.GetMouseButtonUp(1))
+                _rightClickPressed = false;
+            else if (Input.GetMouseButtonDown(1))
+                _rightClickPressed = true;
 
             if (_raycastExist)
             {
@@ -47,7 +52,7 @@ namespace Player
                             _hit.transform.gameObject.SetActive(false);
                             _isHoldingGolemCore = true;
                         }
-                        
+
                         if (_isInPreview && _isHoldingGolemCore)
                         {
                             _hit.transform.gameObject.SetActive(false);
@@ -87,6 +92,19 @@ namespace Player
                             _isHoldingGolemCore = false;
                         }
                     }
+                }
+            }
+
+            // We can "fight", we're not in construction and placement mode
+            if (_isInPreview)
+            {
+                if (_leftClickPressed)
+                {
+                    // Attack
+                }
+                else if (_rightClickPressed)
+                {
+                    // Push enemies
                 }
             }
         }
