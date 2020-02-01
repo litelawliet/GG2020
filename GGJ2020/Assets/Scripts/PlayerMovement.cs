@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
     [SerializeField] private Transform groundCheck = null;
     [SerializeField] private float jumpHeight = 3.0f;
     [SerializeField] private float walkingSpeed = 6.0f;
@@ -20,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask groundMask;
 
+    private CharacterController controller;
     private Transform _playerTransform;
     private Vector3 _velocity;
     private const float Gravity = -9.80665f;
