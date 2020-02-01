@@ -13,6 +13,10 @@ public class Golem : MonoBehaviour
     [SerializeField] private PlayerMovement playerMove;
     [SerializeField] private PlayerHP playerHp;
     [SerializeField] private Animator golemAnim;
+    [SerializeField] private GolemHitbox golemHitbox;
+    [SerializeField] private float minDistance;
+    [SerializeField] private Vector3 playerDistance;
+
     bool _triggered;
 
 
@@ -24,6 +28,10 @@ public class Golem : MonoBehaviour
 
     void Update()
     {
+        if (!_triggered)
+        {
+            golemNavMesh.speed = 6;
+        }
         if (golemNavMesh.isActiveAndEnabled)
         {
             golemNavMesh.SetDestination(player.transform.position);
@@ -37,7 +45,9 @@ public class Golem : MonoBehaviour
 
         if (_triggered)
         {
+            golemNavMesh.speed = 1;
             transform.LookAt(player.transform.position);
+            golemAnim.SetTrigger("Attacc");
             _triggered = false;
         }
     }
@@ -47,8 +57,19 @@ public class Golem : MonoBehaviour
         if (other.GetComponent<PlayerMovement>())
         {
             _triggered = true;
-            golemAnim.SetTrigger("Attacc");
-            Debug.Log("coucou");
+        }
+    }
+
+    public void ReduceHP()
+    {
+        if (golemHitbox.IsWallHit())
+        {
+            hp -= 2;
+            golemHitbox.SetWallHit(false);
+        }
+        else
+        {
+            hp--;
         }
     }
 
