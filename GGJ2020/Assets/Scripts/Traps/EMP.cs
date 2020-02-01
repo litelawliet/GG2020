@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class EMP : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particle;
-    [SerializeField] private Golem golem;
-    [SerializeField] private GameObject player;
-
+    [SerializeField] private ParticleSystem particle = null;
+    [SerializeField] private Golem golemObject = null;
+    [SerializeField] private uint freezeTime = 5u;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Golem"))
         {
+            golemObject = other.GetComponent<Golem>();
             particle.Play();
-            golem.GetNav().enabled = false;
-            StartCoroutine(Waitfor5sec());
+            golemObject.GetNav().enabled = false;
+            StartCoroutine(WaitForSec(freezeTime));
         }
     }
 
-    IEnumerator Waitfor5sec()
+    IEnumerator WaitForSec(uint pSeconds)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(pSeconds);
         gameObject.SetActive(false);
-        golem.GetNav().enabled = true;
+        golemObject.GetNav().enabled = true;
     }
 }

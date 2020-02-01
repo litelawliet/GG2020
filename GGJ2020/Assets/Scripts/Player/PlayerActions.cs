@@ -12,6 +12,7 @@ public class PlayerActions : MonoBehaviour
     private RaycastHit _hit;
     private Camera _camera;
     private bool _isHoldingGolemCore = false;
+    private bool _isInPreview = false;
 
     private void Start()
     {
@@ -25,8 +26,8 @@ public class PlayerActions : MonoBehaviour
             Ray cameraToCursorRay = _camera.ScreenPointToRay(Input.mousePosition);
 
             //if(Debug.isDebugBuild)
-                Debug.DrawRay(transform.position, cameraToCursorRay.direction * distanceToPick, Color.red);
-            
+            Debug.DrawRay(transform.position, cameraToCursorRay.direction * distanceToPick, Color.red);
+
             if (Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
                 distanceToPick))
             {
@@ -42,20 +43,28 @@ public class PlayerActions : MonoBehaviour
                 else if (_hit.transform.tag.Equals("Ground"))
                 {
                     // We can put the core here and construct a trap
-                    if (_isHoldingGolemCore && Input.GetKeyDown(KeyCode.F))
+                    if (!_isInPreview)
                     {
-                        if (trapToDrop != null)
+                        if (_isHoldingGolemCore && Input.GetKeyDown(KeyCode.F))
                         {
-                            // Find hitpoint from where to place the trap
-                            trapToDrop.transform.position = _hit.point;
-                            trapToDrop.SetActive(true);
-                        }
+                            if (trapToDrop != null)
+                            {
+                                // Find hitpoint from where to place the trap
+                                trapToDrop.transform.position = _hit.point;
+                                if (trapToDrop.activeSelf == false)
+                                    trapToDrop.SetActive(true);
+                            }
 
-                        _isHoldingGolemCore = false;
+
+                            _isInPreview = true;
+                        }
+                    }
+                    else
+                    {
+                        //if ()
                     }
                 }
             }
-            
         }
     }
 }
