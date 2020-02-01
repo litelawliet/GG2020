@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4462369934741174790}
   - component: {fileID: 4462369934741174786}
   - component: {fileID: 4462369934741174787}
-  - component: {fileID: 1480459418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -116,9 +115,9 @@ MonoBehaviour:
   walkingSpeed: 6
   sprintSpeed: 15
   groundDistance: 0.4
-  initialFOV: 60
-  sprintingFOV: 45
-  fovSpeed: 15
+  initialFOV: 70
+  sprintingFOV: 65
+  fovSpeed: 20
   fovCoefficientToOriginal: 4
   groundMask:
     serializedVersion: 2
@@ -141,18 +140,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1480459418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4462369934741174789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2304765513932b84e9a7d26f26901467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4462369935209363775
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +198,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -249,8 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d230f15a19b70d843952466076a1cb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 200.79
   playerBody: {fileID: 4462369934741174785}
+  mouseCursorTexture: {fileID: 2800000, guid: 72d3d512a1d6c22478d1e94b43cd3ea8, type: 3}
+  cursorMode: 0
 --- !u!1 &4462369935498894754
 GameObject:
   m_ObjectHideFlags: 0
