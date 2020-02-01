@@ -38,8 +38,6 @@ public class Tesla : MonoBehaviour
         {
             //Instantiate tazzing particle using direction + direction.magnitude
             
-            golemScript.hp--;
-            print(golemScript.hp);
             timer = 0;
         }
     }

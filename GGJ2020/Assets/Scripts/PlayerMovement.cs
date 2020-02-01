@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintingFOV = 30.0f;
     [SerializeField] [Range(10.0f, 20.0f)] private float fovSpeed = 10.0f;
     [SerializeField] private float fovCoefficientToOriginal;
+    [SerializeField] private int hp;
 
     public LayerMask groundMask;
 

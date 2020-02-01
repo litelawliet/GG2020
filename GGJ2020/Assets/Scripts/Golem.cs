@@ -6,19 +6,25 @@ using UnityEngine.AI;
 
 public class Golem : MonoBehaviour
 {
-    public int hp;
-    public NavMeshAgent golem;
-    public GameObject player;
+    [SerializeField] private int hp;
+    private NavMeshAgent golemNavMesh;
+    [SerializeField] private GameObject player;
+    [SerializeField] private PlayerMovement playerMove;
     bool triggered;
-    
+    bool playerHit;
+    bool wallHit;
+
     void Start()
     {
-
+        golemNavMesh = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        golem.SetDestination(player.transform.position);
+        if(golemNavMesh.isActiveAndEnabled)
+        {
+            golemNavMesh.SetDestination(player.transform.position);
+        }
 
         if (hp <= 0)
         {
@@ -45,12 +51,27 @@ public class Golem : MonoBehaviour
     {
         if (collision.collider.GetComponent<PlayerMovement>())
         {
-            //player.hp--;
+
         }
+
         if (collision.collider.CompareTag("Default"))
         {
-            hp = hp - 2;
+            wallHit = true;
+            ReduceHP();
         }
     }
 
+    public void ReduceHP()
+    {
+        if (wallHit)
+        {
+            hp -= 2;
+            wallHit = false;
+        }
+    }
+    
+    public NavMeshAgent GetNav()
+    {
+        return golemNavMesh;
+    }
 }
