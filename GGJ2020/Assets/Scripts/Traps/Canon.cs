@@ -20,9 +20,6 @@ public class Canon : MonoBehaviour
 
     void Update()
     {
-        gameManager.GetGolems();
-
-
         if (target != null && Vector3.Distance(transform.position, target.transform.position) <= range)
         {
             float angle = Vector3.Angle(transform.position, target.transform.position);
