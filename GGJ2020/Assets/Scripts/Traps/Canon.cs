@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject target = null;
     [SerializeField] private float range = 50f;
 
     void Start()

@@ -1,40 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MouseLook : MonoBehaviour
+namespace Player
 {
-    [SerializeField]
-    private float mouseSensitivity = 100.0f;
-
-    [SerializeField]
-    private Transform playerBody = null;
-
-    [SerializeField] private Texture2D mouseCursorTexture;
-    [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
-    private Vector2 _hotSpot = Vector2.zero;
-    
-    private float xRotation = 0.0f;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class MouseLook : MonoBehaviour
     {
-        Cursor.SetCursor(mouseCursorTexture, _hotSpot, cursorMode);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
-    }
+        [SerializeField]
+        private float mouseSensitivity = 100.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        [SerializeField]
+        private Transform playerBody = null;
 
-        xRotation -= mouseY;
+        [SerializeField] private Texture2D mouseCursorTexture = null;
+        [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
+        private Vector2 _hotSpot = Vector2.zero;
+    
+        private float xRotation = 0.0f;
+    
+        // Start is called before the first frame update
+        void Start()
+        {
+            Cursor.SetCursor(mouseCursorTexture, _hotSpot, cursorMode);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
 
-        xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
+        // Update is called once per frame
+        void Update()
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+            xRotation -= mouseY;
+
+            xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
         
-        transform.localRotation = Quaternion.Euler(xRotation, 0.0f, 0.0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+            transform.localRotation = Quaternion.Euler(xRotation, 0.0f, 0.0f);
+            playerBody.Rotate(Vector3.up * mouseX);
+        }
     }
 }

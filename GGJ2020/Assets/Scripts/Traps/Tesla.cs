@@ -1,51 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Enemies;
 using UnityEngine;
 
-
-public class Tesla : MonoBehaviour
+namespace Traps
 {
-    public SphereCollider aoeRadius;
-    public GameObject golem;
-    public Golem golemScript;
-    public int hp;
-    float timer;
-    public int cooldown;
-    public ParticleSystem particle;
-    [SerializeField] private int damage;
-
-
-    void Update()
+    public class Tesla : MonoBehaviour
     {
+        public SphereCollider aoeRadius;
+        public GameObject golem;
+        public Golem golemScript;
+        public int hp;
+        float timer;
+        public int cooldown;
+        public ParticleSystem particle;
+        [SerializeField] private int damage = 2;
+
+
+        void Update()
+        {
     
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Golem"))
+        private void OnTriggerStay(Collider other)
         {
-            Tazzing();
+            if (other.CompareTag("Golem"))
+            {
+                Tazzing();
+            }
         }
-    }
 
-    private void Tazzing()
-    {
-        Vector3 direction = transform.position - golem.transform.position; // se servir de ce vecteur pour particule ?
-        timer += Time.deltaTime;
-        if (timer >= cooldown)
+        private void Tazzing()
         {
-            //Instantiate tazzing particle using direction + direction.magnitude
-            Attack();
-            timer = 0;
+            Vector3 direction = transform.position - golem.transform.position; // se servir de ce vecteur pour particule ?
+            timer += Time.deltaTime;
+            if (timer >= cooldown)
+            {
+                //Instantiate tazzing particle using direction + direction.magnitude
+                Attack();
+                timer = 0;
+            }
         }
-    }
-    public void Attack()
-    {
-        golemScript.ReduceHP(damage);
-        Debug.Log(hp);
+        public void Attack()
+        {
+            golemScript.ReduceHP(damage);
+            Debug.Log(hp);
+        }
     }
 }

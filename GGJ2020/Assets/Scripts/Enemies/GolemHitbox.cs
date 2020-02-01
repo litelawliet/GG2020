@@ -1,43 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GolemHitbox : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] private PlayerHP playerHp;
-    [SerializeField] private int hp;
-    [SerializeField] private bool wallHit;
-    [SerializeField] private Golem golemScript;
-
-    private void OnCollisionEnter(Collision collision)
+    public class GolemHitbox : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        [SerializeField] private bool wallHit;
+        [SerializeField] private Golem golemScript;
+
+        private void Start()
         {
-            playerHp.ReduceHPPlayer();
+            golemScript = GetComponentInParent<Golem>();
         }
 
-        else if (collision.gameObject.CompareTag("Environment"))
+        private void OnTriggerEnter(Collider collider)
         {
-            wallHit = true;
-            golemScript.ReduceHP();
+            wallHit = false;
+            if (collider.gameObject.CompareTag("Player"))
+            {
+            }
+            else if (collider.gameObject.CompareTag("Environment"))
+            {
+                wallHit = true;
+                golemScript.ReduceHP();
+            }
+            else
+            {
+                golemScript.ReduceHP();
+            }
         }
-        else
+
+        public bool IsWallHit()
         {
-            golemScript.ReduceHP();
+            return wallHit;
+        }
+
+        public void SetWallHit(bool pWallHit)
+        {
+            wallHit = pWallHit;
         }
     }
-
-    public bool IsWallHit()
-    {
-
-        return wallHit;
-    }
-
-    public void SetWallHit(bool p_wallHit)
-    {
-        wallHit = p_wallHit;
-    }
-
-
- 
 }

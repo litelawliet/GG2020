@@ -1,28 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
-public class EMP : MonoBehaviour
+namespace Traps
 {
-    [SerializeField] private ParticleSystem particle = null;
-    [SerializeField] private Golem golemObject = null;
-    [SerializeField] private uint freezeTime = 5u;
+    public class EMP : MonoBehaviour
+    {
+        [SerializeField] private ParticleSystem particle = null;
+        [SerializeField] private Golem golemObject = null;
+        [SerializeField] private uint freezeTime = 5u;
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Golem"))
+        private void OnTriggerEnter(Collider other)
         {
-            golemObject = other.GetComponent<Golem>();
-            particle.Play();
-            golemObject.GetNav().enabled = false;
-            StartCoroutine(WaitForSec(freezeTime));
+            if (other.CompareTag("Golem"))
+            {
+                golemObject = other.GetComponent<Golem>();
+                particle.Play();
+                golemObject.GetNav().enabled = false;
+                StartCoroutine(WaitForSec(freezeTime));
+            }
         }
-    }
 
-    IEnumerator WaitForSec(uint pSeconds)
-    {
-        yield return new WaitForSeconds(pSeconds);
-        gameObject.SetActive(false);
-        golemObject.GetNav().enabled = true;
+        IEnumerator WaitForSec(uint pSeconds)
+        {
+            yield return new WaitForSeconds(pSeconds);
+            gameObject.SetActive(false);
+            golemObject.GetNav().enabled = true;
+        }
     }
 }

@@ -1,86 +1,81 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Golem : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] private int hp;
-    private NavMeshAgent golemNavMesh;
-    [SerializeField] private GameObject golemScrap;
-    [SerializeField] private GameObject player;
-    [SerializeField] private PlayerMovement playerMove;
-    [SerializeField] private PlayerHP playerHp;
-    [SerializeField] private Animator golemAnim;
-    [SerializeField] private GolemHitbox golemHitbox;
-    [SerializeField] private float minDistance;
-    [SerializeField] private Vector3 playerDistance;
-
-    bool _triggered;
-
-
-    void Start()
+    public class Golem : MonoBehaviour
     {
-        golemNavMesh = GetComponent<NavMeshAgent>();
-        playerHp = player.GetComponent<PlayerHP>();
-    }
+        [SerializeField] private int hp;
+        [SerializeField] private GameObject golemScrap;
+        [SerializeField] private GameObject player = null;
+        [SerializeField] private Animator golemAnim = null;
+        [SerializeField] private GolemHitbox golemHitbox = null;
 
-    void Update()
-    {
-        if (!_triggered)
-        {
-            golemNavMesh.speed = 6;
-        }
-        if (golemNavMesh.isActiveAndEnabled)
-        {
-            golemNavMesh.SetDestination(player.transform.position);
-        }
+        private bool _triggered;
+        private NavMeshAgent _golemNavMesh;
 
-        if (hp <= 0)
+        void Start()
         {
-            //Instantiate(golemScrap, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            _golemNavMesh = GetComponent<NavMeshAgent>();
         }
 
-        if (_triggered)
+        void Update()
         {
-            golemNavMesh.speed = 1;
-            transform.LookAt(player.transform.position);
-            golemAnim.SetTrigger("Attacc");
-            _triggered = false;
-        }
-    }
+            if (!_triggered)
+            {
+                _golemNavMesh.speed = 6;
+            }
+            if (_golemNavMesh.isActiveAndEnabled)
+            {
+                _golemNavMesh.SetDestination(player.transform.position);
+            }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<PlayerMovement>())
+            if (hp <= 0)
+            {
+                //Instantiate(golemScrap, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+
+            if (_triggered)
+            {
+                _golemNavMesh.speed = 1;
+                transform.LookAt(player.transform.position);
+                golemAnim.SetTrigger("Attacc");
+                _triggered = false;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
         {
-            _triggered = true;
+            if (other.GetComponent<PlayerMovement>())
+            {
+                _triggered = true;
+            }
         }
-    }
 
-    public void ReduceHP()
-    {
-        if (golemHitbox.IsWallHit())
+        public void ReduceHP()
         {
-            hp -= 2;
-            golemHitbox.SetWallHit(false);
+            if (golemHitbox.IsWallHit())
+            {
+                hp -= 2;
+                golemHitbox.SetWallHit(false);
+            }
+            else
+            {
+                hp--;
+            }
         }
-        else
+
+        public void ReduceHP(int p_damage)
         {
-            hp--;
+            hp -= p_damage;    
         }
-    }
-
-    public void ReduceHP(int p_damage)
-    {
-        hp -= p_damage;    
-    }
 
 
-    public NavMeshAgent GetNav()
-    {
-        return golemNavMesh;
+        public NavMeshAgent GetNav()
+        {
+            return _golemNavMesh;
+        }
     }
 }
