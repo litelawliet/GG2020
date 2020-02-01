@@ -24,7 +24,7 @@ public class PlayerActions : MonoBehaviour
         {
             Ray cameraToCursorRay = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if(Debug.isDebugBuild)
+            //if(Debug.isDebugBuild)
                 Debug.DrawRay(transform.position, cameraToCursorRay.direction * distanceToPick, Color.red);
             
             if (Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
