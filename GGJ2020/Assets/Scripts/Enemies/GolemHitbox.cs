@@ -6,39 +6,38 @@ public class GolemHitbox : MonoBehaviour
 {
     [SerializeField] private PlayerHP playerHp;
     [SerializeField] private int hp;
-    bool _wallHit;
+    [SerializeField] private bool wallHit;
+    [SerializeField] private Golem golemScript;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             playerHp.ReduceHPPlayer();
         }
 
-        else if (collision.collider.CompareTag("Environment"))
+        else if (collision.gameObject.CompareTag("Environment"))
         {
-            _wallHit = true;
-            ReduceHP();
+            wallHit = true;
+            golemScript.ReduceHP();
         }
         else
         {
-            ReduceHP();
+            golemScript.ReduceHP();
         }
     }
 
-
-    public void ReduceHP()
+    public bool IsWallHit()
     {
-        if (_wallHit)
-        {
-            hp -= 2;
-            _wallHit = false;
-            Debug.Log(hp);
-        }
-        else
-        {
-            hp--;
-            Debug.Log(hp);
-        }
+
+        return wallHit;
     }
+
+    public void SetWallHit(bool p_wallHit)
+    {
+        wallHit = p_wallHit;
+    }
+
+
+ 
 }
