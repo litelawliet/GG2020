@@ -12,6 +12,8 @@ public class Tesla : MonoBehaviour
     float timer;
     public int cooldown;
     public ParticleSystem particle;
+    [SerializeField] private int damage;
+
 
 
     void Update()
@@ -37,8 +39,13 @@ public class Tesla : MonoBehaviour
         if (timer >= cooldown)
         {
             //Instantiate tazzing particle using direction + direction.magnitude
-            
+            Attack();
             timer = 0;
         }
+    }
+    public void Attack()
+    {
+        golemScript.ReduceHP(damage);
+        Debug.Log(hp);
     }
 }

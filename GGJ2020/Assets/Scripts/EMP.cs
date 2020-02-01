@@ -6,8 +6,7 @@ public class EMP : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particle;
     [SerializeField] private Golem golem;
-    float timer;
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {

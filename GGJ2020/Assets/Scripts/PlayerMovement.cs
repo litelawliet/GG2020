@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintingFOV = 30.0f;
     [SerializeField] [Range(10.0f, 20.0f)] private float fovSpeed = 10.0f;
     [SerializeField] private float fovCoefficientToOriginal;
-    [SerializeField] private int hp;
+  
 
     public LayerMask groundMask;
 
@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSprinting = false;
     private float _fovValue = 0.0f;
 
-    // Start is called before the first frame update
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -39,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         _camera = GetComponentInChildren<Camera>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         _fovValue = fovSpeed * Time.deltaTime;
@@ -102,4 +100,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _camera.fieldOfView = initialFOV;
     }
+
+   
 }

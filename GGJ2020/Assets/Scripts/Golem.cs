@@ -8,33 +8,38 @@ public class Golem : MonoBehaviour
 {
     [SerializeField] private int hp;
     private NavMeshAgent golemNavMesh;
+    [SerializeField] private GameObject golemScrap;
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerMovement playerMove;
-    bool triggered;
-    bool playerHit;
-    bool wallHit;
+    [SerializeField] private PlayerHP playerHp;
+    [SerializeField] private Animation[] golemAnim;
+    bool _triggered;
+    bool _wallHit;
+
 
     void Start()
     {
         golemNavMesh = GetComponent<NavMeshAgent>();
+        playerHp = player.GetComponent<PlayerHP>();
     }
 
     void Update()
     {
-        if(golemNavMesh.isActiveAndEnabled)
+        if (golemNavMesh.isActiveAndEnabled)
         {
             golemNavMesh.SetDestination(player.transform.position);
         }
 
         if (hp <= 0)
         {
+            //Instantiate(golemScrap, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
-        if (triggered)
+        if (_triggered)
         {
             transform.LookAt(player.transform.position);
-            triggered = false;
+            _triggered = false;
         }
     }
 
@@ -42,34 +47,50 @@ public class Golem : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>())
         {
-            triggered = true;
-            //lancer animation d'attaque
+            _triggered = true;
+            golemAnim[1].Play();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.GetComponent<PlayerMovement>())
+        if (collision.collider.CompareTag("Player"))
         {
-
+            playerHp.ReduceHPPlayer();
         }
 
-        if (collision.collider.CompareTag("Default"))
+        else if (collision.collider.CompareTag("Environment"))
         {
-            wallHit = true;
+            _wallHit = true;
+            ReduceHP();
+        }
+        else
+        {
             ReduceHP();
         }
     }
 
     public void ReduceHP()
     {
-        if (wallHit)
+        if (_wallHit)
         {
             hp -= 2;
-            wallHit = false;
+            _wallHit = false;
+            Debug.Log(hp);
+        }
+        else
+        {
+            hp--;
+            Debug.Log(hp);
         }
     }
-    
+
+    public void ReduceHP(int p_damage)
+    {
+        hp -= p_damage;    
+    }
+
+
     public NavMeshAgent GetNav()
     {
         return golemNavMesh;
