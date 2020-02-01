@@ -12,9 +12,8 @@ public class Golem : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerMovement playerMove;
     [SerializeField] private PlayerHP playerHp;
-    [SerializeField] private Animation[] golemAnim;
+    [SerializeField] private Animator golemAnim;
     bool _triggered;
-    bool _wallHit;
 
 
     void Start()
@@ -43,45 +42,13 @@ public class Golem : MonoBehaviour
         }
     }
 
-    private void TriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>())
         {
             _triggered = true;
-            golemAnim[1].Play();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            playerHp.ReduceHPPlayer();
-        }
-
-        else if (collision.collider.CompareTag("Environment"))
-        {
-            _wallHit = true;
-            ReduceHP();
-        }
-        else
-        {
-            ReduceHP();
-        }
-    }
-
-    public void ReduceHP()
-    {
-        if (_wallHit)
-        {
-            hp -= 2;
-            _wallHit = false;
-            Debug.Log(hp);
-        }
-        else
-        {
-            hp--;
-            Debug.Log(hp);
+            golemAnim.SetTrigger("Attacc");
+            Debug.Log("coucou");
         }
     }
 

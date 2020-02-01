@@ -15,9 +15,9 @@ public class Tesla : MonoBehaviour
     [SerializeField] private int damage;
 
 
-
     void Update()
     {
+    
         if (hp <= 0)
         {
             Destroy(gameObject);
