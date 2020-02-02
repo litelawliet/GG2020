@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -186,7 +186,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.6901961, b: 0.3529412, a: 1}
+      maxColor: {r: 0.42670423, g: 0.35294116, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4873,8 +4873,8 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
-  playOnAwake: 0
+  prewarm: 1
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9410,7 +9410,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0569a136aefd3a74d8282f72f8496652, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10308,7 +10308,7 @@ MonoBehaviour:
   golemScript: {fileID: 0}
   hp: 3
   cooldown: 5
-  particle: {fileID: 0}
+  particle: {fileID: 1927311828}
   damage: 2
 --- !u!135 &1778219632541426906
 SphereCollider:
@@ -10321,7 +10321,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 20.09
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &5721731030051915570
 MeshCollider:
@@ -10349,7 +10349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb62525b2f3c9d342bb005125b10a7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  epmPrefab: {fileID: 0}
+  epmPrefab: {fileID: 8212726220524286320, guid: c0aa58a39dbbdf6468de123aafddaa6e,
+    type: 3}
 --- !u!208 &6837888740277186488
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -10564,7 +10565,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c705cb114e3cb2745b29b3ac4af88b11, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

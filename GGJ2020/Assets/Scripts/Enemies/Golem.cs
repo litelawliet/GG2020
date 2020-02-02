@@ -61,7 +61,7 @@ namespace Enemies
             else if (other.CompareTag("Player"))
             {
                 _triggered = true;
-                golemAnim.SetTrigger("Attacc");
+                golemAnim.SetBool("Attacc", true);
             }
             else if (other.CompareTag("Environment"))
             {
