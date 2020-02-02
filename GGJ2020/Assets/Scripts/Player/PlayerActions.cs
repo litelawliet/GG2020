@@ -117,13 +117,14 @@ namespace Player
                     }
                     else if (_hit.transform.gameObject.CompareTag("Tesla"))
                     {
+                        //Debug.Log("TESLA");
                         _hit.transform.gameObject.GetComponent<EPMUpgrade>().UpgradeToEPM();
                         _isHoldingGolemCore = false;
                         trapToDrop = null;
                     }
                     else if (_hit.transform.gameObject.CompareTag("EPM"))
                     {
-                        _hit.transform.gameObject.GetComponent<EPMUpgrade>().UpgradeToEPM();
+                        _hit.transform.gameObject.GetComponent<CanonUpgrade>().UpgradeToCanon();
                         _isHoldingGolemCore = false;
                         trapToDrop = null;
                     }

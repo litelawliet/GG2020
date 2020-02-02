@@ -10,6 +10,9 @@ TagManager:
   - Pickable
   - GolemProjectile
   - GameManager
+  - Tesla
+  - Canon
+  - EPM
   layers:
   - Default
   - TransparentFX
