@@ -1,37 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerHP : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private int hp;
-
-
-    void Start()
+    public class PlayerHP : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private int life = 10;
 
-    void Update()
-    {
-        if (hp <= 0)
+
+        void Start()
         {
-            GameOver();
         }
-    }
 
-    public void ReduceHPPlayer()
-    {
-        hp -= 1;
-    }
+        void Update()
+        {
+            if (life <= 0)
+            {
+                GameOver();
+            }
+        }
 
-    public int GetHp()
-    {
-        return hp;
-    }
+        public void ReduceLifeOf(int pLife)
+        {
+            life -= pLife;
+        }
 
-    void GameOver()
-    {
+        public int Life()
+        {
+            return life;
+        }
 
+        void GameOver()
+        {
+            Debug.Log("GAMEOVER");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("GolemProjectile"))
+            {
+                ReduceLifeOf(1);
+            }
+        }
     }
 }

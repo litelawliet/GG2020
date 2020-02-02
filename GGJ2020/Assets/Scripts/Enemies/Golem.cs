@@ -1,98 +1,81 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Golem : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] private int hp;
-    private NavMeshAgent golemNavMesh;
-    [SerializeField] private GameObject golemScrap;
-    [SerializeField] private GameObject player;
-    [SerializeField] private PlayerMovement playerMove;
-    [SerializeField] private PlayerHP playerHp;
-    [SerializeField] private Animation[] golemAnim;
-    bool _triggered;
-    bool _wallHit;
-
-
-    void Start()
+    public class Golem : MonoBehaviour
     {
-        golemNavMesh = GetComponent<NavMeshAgent>();
-        playerHp = player.GetComponent<PlayerHP>();
-    }
+        [SerializeField] private int hp;
+        [SerializeField] private GameObject golemScrap;
+        [SerializeField] private GameObject player = null;
+        [SerializeField] private Animator golemAnim = null;
+        [SerializeField] private GolemHitbox golemHitbox = null;
 
-    void Update()
-    {
-        if (golemNavMesh.isActiveAndEnabled)
+        private bool _triggered;
+        private NavMeshAgent _golemNavMesh;
+
+        void Start()
         {
-            golemNavMesh.SetDestination(player.transform.position);
+            _golemNavMesh = GetComponent<NavMeshAgent>();
         }
 
-        if (hp <= 0)
+        void Update()
         {
-            //Instantiate(golemScrap, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (!_triggered)
+            {
+                _golemNavMesh.speed = 6;
+            }
+            if (_golemNavMesh.isActiveAndEnabled)
+            {
+                _golemNavMesh.SetDestination(player.transform.position);
+            }
+
+            if (hp <= 0)
+            {
+                //Instantiate(golemScrap, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+
+            if (_triggered)
+            {
+                _golemNavMesh.speed = 1;
+                transform.LookAt(player.transform.position);
+                golemAnim.SetTrigger("Attacc");
+                _triggered = false;
+            }
         }
 
-        if (_triggered)
+        private void OnTriggerEnter(Collider other)
         {
-            transform.LookAt(player.transform.position);
-            _triggered = false;
-        }
-    }
-
-    private void TriggerEnter(Collider other)
-    {
-        if (other.GetComponent<PlayerMovement>())
-        {
-            _triggered = true;
-            golemAnim[1].Play();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            playerHp.ReduceHPPlayer();
+            if (other.GetComponent<PlayerMovement>())
+            {
+                _triggered = true;
+            }
         }
 
-        else if (collision.collider.CompareTag("Environment"))
+        public void ReduceHP()
         {
-            _wallHit = true;
-            ReduceHP();
+            if (golemHitbox.IsWallHit())
+            {
+                hp -= 2;
+                golemHitbox.SetWallHit(false);
+            }
+            else
+            {
+                hp--;
+            }
         }
-        else
-        {
-            ReduceHP();
-        }
-    }
 
-    public void ReduceHP()
-    {
-        if (_wallHit)
+        public void ReduceHP(int p_damage)
         {
-            hp -= 2;
-            _wallHit = false;
-            Debug.Log(hp);
+            hp -= p_damage;    
         }
-        else
-        {
-            hp--;
-            Debug.Log(hp);
-        }
-    }
-
-    public void ReduceHP(int p_damage)
-    {
-        hp -= p_damage;    
-    }
 
 
-    public NavMeshAgent GetNav()
-    {
-        return golemNavMesh;
+        public NavMeshAgent GetNav()
+        {
+            return _golemNavMesh;
+        }
     }
 }

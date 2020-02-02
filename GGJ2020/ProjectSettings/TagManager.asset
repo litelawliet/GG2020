@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Golem
   - Environment
+  - Ground
+  - Pickable
+  - GolemProjectile
   layers:
   - Default
   - TransparentFX
