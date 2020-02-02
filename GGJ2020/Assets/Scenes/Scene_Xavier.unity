@@ -380,6 +380,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5705077821740613282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &611592286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4460670735533731558, guid: a4edad2db9c1a684baafe0eea9b2482b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6901879195392115094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &611592290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611592286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.3429427, y: 2.0400305, z: 4.4967494}
+  m_Center: {x: -1.5763847, y: -3.7000155, z: -0.721376}
 --- !u!114 &638374428 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3887378655207267073, guid: 0c1336433afb7124ba8fee839178809d,
@@ -2227,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 845592330510605557, guid: a4edad2db9c1a684baafe0eea9b2482b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.461899
+      value: 7.49
       objectReference: {fileID: 0}
     - target: {fileID: 845592330510605557, guid: a4edad2db9c1a684baafe0eea9b2482b,
         type: 3}
@@ -2283,6 +2302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: balance 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460670735533731558, guid: a4edad2db9c1a684baafe0eea9b2482b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4edad2db9c1a684baafe0eea9b2482b, type: 3}
