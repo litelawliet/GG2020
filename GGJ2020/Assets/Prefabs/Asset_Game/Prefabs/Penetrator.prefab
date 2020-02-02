@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  bulletPrefab: {fileID: 2600338034225093910, guid: fd27a48ec1b51984b9ca90651af995e8,
+  bulletPrefab: {fileID: 8970141368549103073, guid: cbb1c9f968bf2f04ca09a9c8257fbdbe,
     type: 3}
   range: 50
   rotationSpeed: 50

@@ -33,7 +33,13 @@ namespace Traps
                 Tazzing();
                 particle.transform.LookAt(golem.transform.position);
             }
+            //else
+            //{
+            //    particle.SetActive(false);
+            //}
         }
+
+        
 
         private void Tazzing()
         {
