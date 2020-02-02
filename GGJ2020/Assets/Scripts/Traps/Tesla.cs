@@ -8,10 +8,11 @@ namespace Traps
         public SphereCollider aoeRadius;
         public GameObject golem;
         public Golem golemScript;
+
         public int hp;
         float timer;
         public int cooldown;
-        public ParticleSystem particle;
+        public GameObject particle;
         [SerializeField] private int damage = 2;
 
         void Update()
@@ -35,12 +36,12 @@ namespace Traps
 
         private void Tazzing()
         {
-            Vector3 direction =
-                transform.position - golem.transform.position; // se servir de ce vecteur pour particule ?
+            
             timer += Time.deltaTime;
             if (timer >= cooldown)
             {
-                //Instantiate tazzing particle using direction + direction.magnitude
+                particle.SetActive(true);
+                particle.transform.LookAt(golem.transform.position);
                 Attack();
                 timer = 0;
             }
