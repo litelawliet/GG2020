@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using Manager;
 using UnityEngine;
 
@@ -8,21 +9,21 @@ namespace Traps
     public class Canon : MonoBehaviour
     {
         [SerializeField] private GameObject target = null;
-        [SerializeField] private GameObject bullet;
+        [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float range = 50f;
         [SerializeField] private float rotationSpeed = 30.0f;
         [SerializeField] private Animator canonAnim;
         [SerializeField] private Manager.GameManager gameManager;
-        private List<GameObject> enemies;
-        private Quaternion m_lookRotation;
-        private bool recovery = false;
-        private float timer;
-        private int cooldown;
+        private List<GameObject> _enemies;
+        private Quaternion _mLookRotation;
+        private bool _recovery = false;
+        private float _timer;
+        [SerializeField] private float cooldown = 2.0f;
 
         void Start()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-            enemies = gameManager.GetGolems();
+            _enemies = gameManager.GetGolems();
         }
 
         void Update()
@@ -30,7 +31,7 @@ namespace Traps
             // Find target
             if (target == null)
             {
-                foreach (GameObject enemy in enemies)
+                foreach (GameObject enemy in _enemies)
                 {
                     if (Vector3.Distance(enemy.transform.position, transform.position) <= range)
                     {
@@ -44,36 +45,33 @@ namespace Traps
                 }
             }
 
-            if (recovery)
+            if (_recovery)
             {
-                timer += Time.deltaTime;
-                if (timer >= cooldown)
+                _timer += Time.deltaTime;
+                if (_timer >= cooldown)
                 {
-                    recovery = false;
-                    timer = 0.0f;
+                    _recovery = false;
+                    _timer = 0.0f;
                 }
             }
 
             if (target != null)
             {
-                m_lookRotation = Quaternion.LookRotation(target.transform.position - transform.position);
-                m_lookRotation.x = 0.0f;
-                m_lookRotation.z = 0.0f;
-                
-                if (transform.rotation != m_lookRotation)
+                _mLookRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                _mLookRotation.x = 0.0f;
+                _mLookRotation.z = 0.0f;
+
+                if (transform.rotation != _mLookRotation)
                 {
                     transform.rotation =
-                        Quaternion.RotateTowards(transform.rotation, m_lookRotation,
+                        Quaternion.RotateTowards(transform.rotation, _mLookRotation,
                             rotationSpeed * Time.deltaTime * -1.0f);
                 }
 
-                if (Mathf.Abs(transform.rotation.y - target.transform.rotation.y) <= 5.0f)
+                if (!_recovery)
                 {
-                    if (!recovery)
-                    {
-                        Shoot();
-                        recovery = true;
-                    }
+                    Shoot();
+                    _recovery = true;
                 }
             }
 
@@ -83,7 +81,10 @@ namespace Traps
         private void Shoot()
         {
             canonAnim.SetBool("Yeet", true);
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Vector3 positionBuller = transform.GetChild(1).position;
+            GameObject bullet = Instantiate(bulletPrefab, positionBuller,
+                transform.rotation);
+            bullet.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * 100, ForceMode.Impulse);
         }
     }
 }

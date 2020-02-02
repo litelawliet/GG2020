@@ -38,8 +38,7 @@ namespace Enemies
             if (hp <= 0)
             {
                 //Instantiate(golemScrap, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                Instantiate(golemScrap, transform.position, Quaternion.identity);
+                GolemDeath();
             }
 
             if (_triggered)
@@ -49,23 +48,30 @@ namespace Enemies
             }
         }
 
+        private void GolemDeath()
+        {
+            gameObject.SetActive(false);
+            Instantiate(golemScrap, transform.position, Quaternion.identity);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Ground"))
+            if (other.CompareTag("Ground"))
             {}
-            else if (other.gameObject.CompareTag("Player"))
+            else if (other.CompareTag("Player"))
             {
                 _triggered = true;
                 golemAnim.SetTrigger("Attacc");
             }
-            else if (other.gameObject.CompareTag("Environment"))
+            else if (other.CompareTag("Environment"))
             {
                 _wallHit = true;
                 ReduceHP();
             }
-            else
+            else if (other.CompareTag("Ammo"))
             {
-                ReduceHP();
+                Debug.Log("ammo trigger");
+                GolemDeath();
             }
         }
 

@@ -451,8 +451,6 @@ GameObject:
   - component: {fileID: 365768594}
   - component: {fileID: 365768596}
   - component: {fileID: 365768595}
-  - component: {fileID: 5791768316244694694}
-  - component: {fileID: 3521238108381157635}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Golem
@@ -468,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580715232024382986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.49968, y: 8.37, z: -35.86329}
+  m_LocalPosition: {x: 15.49968, y: 8.1, z: -35.86329}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4082361971670391685}
@@ -554,8 +552,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.3
-  m_Center: {x: 0, y: -3.19, z: 0}
+  m_Radius: 6.31
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &365768595
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -571,33 +569,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &5791768316244694694
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580715232024382986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &3521238108381157635
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580715232024382986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3.3
-  m_Center: {x: 0, y: -3.19, z: 0}
+  m_CollisionDetection: 2
 --- !u!1 &4859708727702402326
 GameObject:
   m_ObjectHideFlags: 0
