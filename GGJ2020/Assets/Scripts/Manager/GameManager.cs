@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Manager
 {
@@ -17,10 +18,16 @@ namespace Manager
             }
         }
 
-        void Update()
+        public void OnClick()
         {
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        public void QuitAppli()
+        {
+            Application.Quit();
+        }
+        
 
         public List<GameObject> GetGolems()
         {
