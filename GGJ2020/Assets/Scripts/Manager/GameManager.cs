@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ namespace Manager
     {
         [SerializeField] private GameObject golemPrefab = null;
         [SerializeField] private GameObject winScreen;
-        [SerializeField] private Player.PlayerMovement playerMove;
+        [SerializeField] private PlayerMovement playerMove;
         [SerializeField] private Doors doorScript; //used to know when the player won the game
         private List<GameObject> golems = new List<GameObject>();
 

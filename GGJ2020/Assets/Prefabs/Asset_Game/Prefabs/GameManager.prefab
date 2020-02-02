@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a41e0e77f3c4541adbf12dc8fb7aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golemPrefab: {fileID: 603105252029582236, guid: 8c07b284315513649a0ac6aa2496185b,
+  golemPrefab: {fileID: 4580715232024382986, guid: 0ced2827b1abf2d43b1cd5b6b0c6ed3f,
     type: 3}
   winScreen: {fileID: 0}
   playerMove: {fileID: 0}
