@@ -1254,8 +1254,10 @@ MonoBehaviour:
   rotationSpeed: 50
   canonAnim: {fileID: 4518867846873002238}
   gameManager: {fileID: 0}
-  cooldown: 4
-  bulletSpeed: 100
+  cooldown: 8
+  bulletSpeed: 500
+  breakDown: {fileID: 342852246577063518}
+  hp: 5
 --- !u!54 &257849467
 Rigidbody:
   m_ObjectHideFlags: 0
