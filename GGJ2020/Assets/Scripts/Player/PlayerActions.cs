@@ -52,44 +52,46 @@ namespace Player
 
             if (_raycastExist)
             {
-                if (_hit.transform.gameObject.CompareTag("Pickable"))
+                if (_hit.transform.gameObject != null)
                 {
-                    if (_usePressed)
+                    if (_hit.transform.gameObject.CompareTag("Pickable"))
                     {
-                        if (!_isHoldingGolemCore)
+                        if (_usePressed)
                         {
-                            trapToDrop = _hit.transform.gameObject;
-                            _hit.transform.gameObject.SetActive(false);
-                            _isHoldingGolemCore = true;
-                        }
-
-                        if (_isInPreview && _isHoldingGolemCore)
-                        {
-                            _hit.transform.gameObject.SetActive(false);
-                            _isInPreview = false;
-                        }
-
-                        if (_isHoldingGolemCore && !_isInPreview)
-                        {
-                            if (_hit.transform.gameObject.CompareTag("Balance"))
+                            if (!_isHoldingGolemCore)
                             {
-                                _hit.transform.gameObject.GetComponent<Balance>().AddCore();
-                                _isHoldingGolemCore = false;
-                                trapToDrop = null;
+                                trapToDrop = _hit.transform.gameObject;
+                                _hit.transform.gameObject.SetActive(false);
+                                _isHoldingGolemCore = true;
+                            }
+
+                            if (_isInPreview && _isHoldingGolemCore)
+                            {
+                                _hit.transform.gameObject.SetActive(false);
+                                _isInPreview = false;
+                            }
+
+                            if (_isHoldingGolemCore && !_isInPreview)
+                            {
+                                if (_hit.transform.gameObject.CompareTag("Balance"))
+                                {
+                                    _hit.transform.gameObject.GetComponent<Balance>().AddCore();
+                                    _isHoldingGolemCore = false;
+                                    trapToDrop = null;
+                                }
                             }
                         }
-                    }
 
-                    if (_leftClickPressed && _isHoldingGolemCore && _isInPreview)
-                    {
-                        trapToDrop.transform.position = _hit.point;
-                        _isInPreview = false;
-                        _isHoldingGolemCore = false;
-                        trapToDrop = null;
-                    }
-                    else if (_leftClickPressed && _isHoldingGolemCore && !_isInPreview)
-                    {
-                        
+                        if (_leftClickPressed && _isHoldingGolemCore && _isInPreview)
+                        {
+                            trapToDrop.transform.position = _hit.point;
+                            _isInPreview = false;
+                            _isHoldingGolemCore = false;
+                            trapToDrop = null;
+                        }
+                        else if (_leftClickPressed && _isHoldingGolemCore && !_isInPreview)
+                        {
+                        }
                     }
                 }
 
@@ -132,7 +134,6 @@ namespace Player
                     }
                     else if (_hit.transform.gameObject.CompareTag("Tesla"))
                     {
-                        //Debug.Log("TESLA");
                         _hit.transform.gameObject.GetComponent<EPMUpgrade>().UpgradeToEPM();
                         _isHoldingGolemCore = false;
                         trapToDrop = null;
@@ -166,7 +167,8 @@ namespace Player
                             if (distance <= pushRange)
                             {
                                 inRangeGolems.Add(golem);
-                                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -100.0f)); 
+                                golem.GetComponent<Rigidbody>()
+                                    .AddForce(golem.transform.forward * (pushForce * -100.0f));
                             }
                         }
                     }
