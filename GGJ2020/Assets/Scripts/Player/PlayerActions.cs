@@ -50,6 +50,11 @@ namespace Player
             else if (Input.GetMouseButtonDown(1))
                 _rightClickPressed = true;
 
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GameObject.FindWithTag("Sortie").GetComponent<Animator>().SetBool("DoorOpen", true);
+            }
+            
             if (_raycastExist)
             {
                 if (_hit.transform.gameObject != null)
