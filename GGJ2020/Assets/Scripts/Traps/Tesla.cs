@@ -7,6 +7,7 @@ namespace Traps
     {
         public SphereCollider aoeRadius;
         public GameObject golem;
+        [SerializeField] private GameObject breakDown;
         public Golem golemScript;
 
         public int hp;
@@ -19,13 +20,13 @@ namespace Traps
         {
             if (hp <= 0)
             {
-                Destroy(gameObject);
+                breakDown.SetActive(true);
             }
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Golem"))
+            if (hp > 0 && other.CompareTag("Golem"))
             {
                 golem = other.gameObject;
                 golemScript = golem.GetComponent<Golem>();
@@ -33,17 +34,11 @@ namespace Traps
                 Tazzing();
                 particle.transform.LookAt(golem.transform.position);
             }
-            //else
-            //{
-            //    particle.SetActive(false);
-            //}
+           
         }
-
-        
 
         private void Tazzing()
         {
-            
             timer += Time.deltaTime;
             if (timer >= cooldown)
             {
@@ -58,5 +53,12 @@ namespace Traps
             golemScript.ReduceHP(damage);
             Debug.Log(hp);
         }
+
+        public void Heal(int p_HealValue)
+        {
+            hp += p_HealValue;
+        }
     }
+
+    
 }
