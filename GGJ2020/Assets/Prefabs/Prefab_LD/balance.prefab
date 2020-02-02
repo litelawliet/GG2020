@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 2198013919932119500}
   m_Layer: 0
   m_Name: balance
-  m_TagString: Environment
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
