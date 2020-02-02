@@ -31,6 +31,7 @@ namespace Traps
                 golemScript = golem.GetComponent<Golem>();
 
                 Tazzing();
+                particle.transform.LookAt(golem.transform.position);
             }
         }
 
@@ -41,7 +42,6 @@ namespace Traps
             if (timer >= cooldown)
             {
                 particle.SetActive(true);
-                particle.transform.LookAt(golem.transform.position);
                 Attack();
                 timer = 0;
             }
