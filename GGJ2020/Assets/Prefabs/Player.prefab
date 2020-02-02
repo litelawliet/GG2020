@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3887378653876537288}
   - component: {fileID: 3887378653876537286}
   - component: {fileID: 3887378653876537289}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: handL_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3887378653957711261}
   - component: {fileID: 3887378653957711259}
   - component: {fileID: 3887378653957711258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: handR_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 3887378654073758355}
   - component: {fileID: 3887378654073758353}
   - component: {fileID: 3887378654073758352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spirale_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 3887378654437411270}
   - component: {fileID: 3887378654437411273}
   - component: {fileID: 3887378654437411272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 3887378654590881858}
   - component: {fileID: 3887378654590881856}
   - component: {fileID: 3887378654590881859}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: head_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3887378654947813397}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 3887378655017404241}
   - component: {fileID: 3887378655017404239}
   - component: {fileID: 3887378655017404238}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: manche_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 3887378655207267074}
   - component: {fileID: 3887378655207267077}
   - component: {fileID: 3887378655207267076}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: -0.75, z: -0.00000008940697}
 --- !u!114 &3887378655207267073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.75, z: 0}
 --- !u!54 &3887378655207267075
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10
-  playerMov: {fileID: 0}
+  playerMov: {fileID: 3887378655207267073}
   deathScreen: {fileID: 0}
 --- !u!114 &3887378655207267077
 MonoBehaviour:
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 3887378655474005289}
   - component: {fileID: 3887378655474005287}
   - component: {fileID: 3887378655474005286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sphere_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3887378655519704339}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weapon_LP-A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

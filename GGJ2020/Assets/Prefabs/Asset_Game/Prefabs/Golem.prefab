@@ -401,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3067158194149631182}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.011358023, y: 0, z: 0}
+  m_LocalPosition: {x: -0.02, y: 3.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8050279527998311336}
@@ -505,8 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  golemScrap: {fileID: 8953367136363851386, guid: 833e4a636ff46f04b89d4b35434dbe64,
-    type: 3}
+  golemScrap: {fileID: 0}
 --- !u!65 &365768594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1352,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHit: 0
-  golemScript: {fileID: 0}
+  golemScript: {fileID: -5905781624324723069}
 --- !u!1 &8239784476954520472
 GameObject:
   m_ObjectHideFlags: 0
