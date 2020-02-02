@@ -16,15 +16,13 @@ namespace Manager
 
         void Start()
         {
-            for (int i = 0; i < 5; i++)
-            {
+
                 //Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 6.0f, Random.Range(-10.0f, 10.0f));
                 golems.Add(Instantiate(golemPrefab, positions[0].position, Quaternion.identity));
                 golems.Add(Instantiate(golemPrefab, positions[1].position, Quaternion.identity));
                 golems.Add(Instantiate(golemPrefab, positions[2].position, Quaternion.identity));
                 golems.Add(Instantiate(golemPrefab, positions[3].position, Quaternion.identity));
                 golems.Add(Instantiate(golemPrefab, positions[4].position, Quaternion.identity));
-            }
         }
 
         public void Update()
