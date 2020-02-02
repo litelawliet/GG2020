@@ -747,6 +747,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8130359853988745157}
   - component: {fileID: 3868139061533287618}
+  - component: {fileID: 7879181411450672037}
+  - component: {fileID: 1778219632541426906}
+  - component: {fileID: 5721731030051915570}
+  - component: {fileID: 2391421447959985458}
   m_Layer: 0
   m_Name: Tesla
   m_TagString: Untagged
@@ -761,9 +765,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5084439653395627478}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.882409, y: 2.0337062, z: -15.083435}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 6827970653836096543}
   m_Father: {fileID: 0}
@@ -788,6 +792,65 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7879181411450672037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084439653395627478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d13fedf18f29fe4fa0d524e92e765a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aoeRadius: {fileID: 1778219632541426906}
+  golem: {fileID: 0}
+  golemScript: {fileID: 0}
+  hp: 3
+  cooldown: 5
+  particle: {fileID: 0}
+  damage: 2
+--- !u!135 &1778219632541426906
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084439653395627478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &5721731030051915570
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084439653395627478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &2391421447959985458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084439653395627478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb62525b2f3c9d342bb005125b10a7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  epmPrefab: {fileID: 0}
 --- !u!1 &5097596898947151790
 GameObject:
   m_ObjectHideFlags: 0
