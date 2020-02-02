@@ -68,6 +68,16 @@ namespace Player
                             _hit.transform.gameObject.SetActive(false);
                             _isInPreview = false;
                         }
+
+                        if (_isHoldingGolemCore && !_isInPreview)
+                        {
+                            if (_hit.transform.gameObject.CompareTag("Balance"))
+                            {
+                                _hit.transform.gameObject.GetComponent<Balance>().AddCore();
+                                _isHoldingGolemCore = false;
+                                trapToDrop = null;
+                            }
+                        }
                     }
 
                     if (_leftClickPressed && _isHoldingGolemCore && _isInPreview)
@@ -76,6 +86,10 @@ namespace Player
                         _isInPreview = false;
                         _isHoldingGolemCore = false;
                         trapToDrop = null;
+                    }
+                    else if (_leftClickPressed && _isHoldingGolemCore && !_isInPreview)
+                    {
+                        
                     }
                 }
 
@@ -138,7 +152,6 @@ namespace Player
                         _hit.transform.gameObject.GetComponent<Enemies.Golem>().HealtOf(HealValue);
                     }
                 }
-
                 else if (_rightClickPressed)
                 {
                     // Push enemies

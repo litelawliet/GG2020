@@ -23,6 +23,7 @@ namespace Player
         private Vector3 _velocity;
         private const float Gravity = -9.80665f;
         private bool _isGrounded;
+        private Vector3 _speed = Vector3.zero;
         private Camera _camera;
         private bool _isSprinting = false;
         private float _fovValue = 0.0f;
@@ -31,6 +32,7 @@ namespace Player
         {
             controller = GetComponent<CharacterController>();
             _playerTransform = transform;
+            _speed = new Vector3(walkingSpeed, 0.0f, walkingSpeed);
             _camera = GetComponentInChildren<Camera>();
         }
 
@@ -54,10 +56,14 @@ namespace Player
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 _isSprinting = false;
+                _speed = new Vector3(sprintSpeedHorizontal, 0.0f, sprintSpeedVertical);
             }
 
-            Vector3 move = _playerTransform.right * x * sprintSpeedHorizontal + _playerTransform.forward * z * sprintSpeedVertical;
-            controller.Move(move * (walkingSpeed * Time.deltaTime));
+            Vector3 move = _playerTransform.right * x + _playerTransform.forward * z;
+            move.x *= sprintSpeedHorizontal * Time.deltaTime;
+            move.z *= sprintSpeedVertical * Time.deltaTime;
+            
+            controller.Move(move);
 
             if (Input.GetButtonDown("Jump") && _isGrounded)
             {
