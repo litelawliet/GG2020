@@ -380,14 +380,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5705077821740613282}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!82 &638374422 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1238989405, guid: 0c1336433afb7124ba8fee839178809d,
     type: 3}
   m_PrefabInstance: {fileID: 1469012596}
   m_PrefabAsset: {fileID: 0}
-=======
 --- !u!1 &611592286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4460670735533731558, guid: a4edad2db9c1a684baafe0eea9b2482b,
@@ -407,7 +405,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.3429427, y: 2.0400305, z: 4.4967494}
   m_Center: {x: -1.5763847, y: -3.7000155, z: -0.721376}
->>>>>>> Stashed changes
 --- !u!114 &638374428 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3887378655207267073, guid: 0c1336433afb7124ba8fee839178809d,
