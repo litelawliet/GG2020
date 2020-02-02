@@ -105,11 +105,28 @@ namespace Player
             }
 
             // We can "fight", we're not in construction and placement mode
-            if (_isInPreview)
+            if (!_isInPreview)
             {
-                if (_leftClickPressed)
+                if (_leftClickPressed && _isHoldingGolemCore)
                 {
-                    // Attack
+                    if (_hit.transform.gameObject.CompareTag("Pickable"))
+                    {
+                        _hit.transform.gameObject.GetComponent<TeslaUpgrade>().UpgradeToTesla();
+                        _isHoldingGolemCore = false;
+                        trapToDrop = null;
+                    }
+                    else if (_hit.transform.gameObject.CompareTag("Tesla"))
+                    {
+                        _hit.transform.gameObject.GetComponent<EPMUpgrade>().UpgradeToEPM();
+                        _isHoldingGolemCore = false;
+                        trapToDrop = null;
+                    }
+                    else if (_hit.transform.gameObject.CompareTag("EPM"))
+                    {
+                        _hit.transform.gameObject.GetComponent<EPMUpgrade>().UpgradeToEPM();
+                        _isHoldingGolemCore = false;
+                        trapToDrop = null;
+                    }
                 }
                 else if (_rightClickPressed)
                 {
@@ -124,8 +141,7 @@ namespace Player
                             if (distance <= pushRange)
                             {
                                 inRangeGolems.Add(golem);
-                                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -100.0f));
-
+                                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -100.0f)); 
                             }
                         }
                     }
