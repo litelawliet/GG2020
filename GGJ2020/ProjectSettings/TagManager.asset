@@ -13,6 +13,7 @@ TagManager:
   - Tesla
   - Canon
   - EPM
+  - Ammo
   layers:
   - Default
   - TransparentFX

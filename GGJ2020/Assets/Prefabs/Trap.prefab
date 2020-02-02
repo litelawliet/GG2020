@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002b1d249070339439d36d1828a09cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teslaPrefab: {fileID: 5084439653395627478, guid: 38cfeb60868088748a2abe98e6cd7fe0,
+  teslaPrefab: {fileID: 5084439653395627478, guid: 267cf7f15ceb0f742ba5a8a92a3d631f,
     type: 3}
 --- !u!208 &7273889462485953193
 NavMeshObstacle:

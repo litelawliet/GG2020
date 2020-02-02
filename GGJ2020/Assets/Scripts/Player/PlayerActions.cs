@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Manager;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace Player
 {
@@ -12,6 +11,7 @@ namespace Player
         [SerializeField] private GameManager manager = null;
         [SerializeField] private float pushRange = 10.0f;
         [SerializeField] private float pushForce = 1.0f;
+        [SerializeField] private Animator playerAnim;
 
         private RaycastHit _hit;
         private Camera _camera;
@@ -129,10 +129,16 @@ namespace Player
                         trapToDrop = null;
                     }
                 }
+                else if (_leftClickPressed && !_isHoldingGolemCore)
+                {
+                    playerAnim.SetTrigger("LeftClick");
+                }
+
                 else if (_rightClickPressed)
                 {
                     // Push enemies
                     // Find golems inside the range of push
+                    playerAnim.SetTrigger("RightClick");
                     float distance = float.MaxValue;
                     if (inRangeGolems.Count == 0)
                     {
