@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] private float pushRange = 10.0f;
         [SerializeField] private float pushForce = 1.0f;
         [SerializeField] private Animator playerAnim;
+        [SerializeField] private int HealValue = 2;
 
         private RaycastHit _hit;
         private Camera _camera;
@@ -132,6 +133,10 @@ namespace Player
                 else if (_leftClickPressed && !_isHoldingGolemCore)
                 {
                     playerAnim.SetTrigger("LeftClick");
+                    if (_hit.collider.CompareTag("Golem"))
+                    {
+                        _hit.transform.gameObject.GetComponent<Enemies.Golem>().HealtOf(HealValue);
+                    }
                 }
 
                 else if (_rightClickPressed)
