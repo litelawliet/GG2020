@@ -7,7 +7,8 @@ namespace Player
         [SerializeField] private Transform groundCheck = null;
         [SerializeField] private float jumpHeight = 3.0f;
         [SerializeField] private float walkingSpeed = 6.0f;
-        [SerializeField] private float sprintSpeed = 12.0f;
+        [SerializeField] private float sprintSpeedVertical = 12.0f;
+        [SerializeField] private float sprintSpeedHorizontal = 9.0f;
         [SerializeField] private float groundDistance = 0.4f;
         [SerializeField] private float initialFOV = 60.0f;
         [SerializeField] private float sprintingFOV = 30.0f;
@@ -22,7 +23,6 @@ namespace Player
         private Vector3 _velocity;
         private const float Gravity = -9.80665f;
         private bool _isGrounded;
-        private float _speed = 0.0f;
         private Camera _camera;
         private bool _isSprinting = false;
         private float _fovValue = 0.0f;
@@ -31,7 +31,6 @@ namespace Player
         {
             controller = GetComponent<CharacterController>();
             _playerTransform = transform;
-            _speed = walkingSpeed;
             _camera = GetComponentInChildren<Camera>();
         }
 
@@ -50,17 +49,15 @@ namespace Player
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _isSprinting = true;
-                _speed = sprintSpeed;
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 _isSprinting = false;
-                _speed = walkingSpeed;
             }
 
-            Vector3 move = _playerTransform.right * x + _playerTransform.forward * z;
-            controller.Move(move * (_speed * Time.deltaTime));
+            Vector3 move = _playerTransform.right * x * sprintSpeedHorizontal + _playerTransform.forward * z * sprintSpeedVertical;
+            controller.Move(move * (walkingSpeed * Time.deltaTime));
 
             if (Input.GetButtonDown("Jump") && _isGrounded)
             {
