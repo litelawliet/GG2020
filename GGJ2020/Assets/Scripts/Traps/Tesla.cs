@@ -14,7 +14,6 @@ namespace Traps
         public ParticleSystem particle;
         [SerializeField] private int damage = 2;
 
-
         void Update()
         {
             if (hp <= 0)
@@ -27,13 +26,17 @@ namespace Traps
         {
             if (other.CompareTag("Golem"))
             {
+                golem = other.gameObject;
+                golemScript = golem.GetComponent<Golem>();
+
                 Tazzing();
             }
         }
 
         private void Tazzing()
         {
-            Vector3 direction = transform.position - golem.transform.position; // se servir de ce vecteur pour particule ?
+            Vector3 direction =
+                transform.position - golem.transform.position; // se servir de ce vecteur pour particule ?
             timer += Time.deltaTime;
             if (timer >= cooldown)
             {
@@ -42,6 +45,7 @@ namespace Traps
                 timer = 0;
             }
         }
+
         public void Attack()
         {
             golemScript.ReduceHP(damage);
