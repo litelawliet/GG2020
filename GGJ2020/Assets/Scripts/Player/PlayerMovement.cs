@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Player
 {
@@ -26,6 +27,8 @@ namespace Player
         private Camera _camera;
         private bool _isSprinting = false;
         private float _fovValue = 0.0f;
+        [SerializeField] private List<AudioClip> audioClip = new List<AudioClip>();
+        [SerializeField] private AudioSource audioSource;
 
         private void Start()
         {
@@ -47,6 +50,20 @@ namespace Player
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
+            if (x != 0 && z != 0)
+            {
+                if (!audioSource.isPlaying && !_isSprinting)
+                {
+                    audioSource.PlayOneShot(audioClip[2]);
+                }
+                else if (!audioSource.isPlaying && _isSprinting)
+                {
+                    audioSource.PlayOneShot(audioClip[1]);
+                }
+
+            }
+
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _isSprinting = true;
@@ -64,6 +81,7 @@ namespace Player
 
             if (Input.GetButtonDown("Jump") && _isGrounded)
             {
+                audioSource.PlayOneShot(audioClip[0]);
                 _velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * Gravity);
             }
 

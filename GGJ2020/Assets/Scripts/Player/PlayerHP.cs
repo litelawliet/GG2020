@@ -39,6 +39,7 @@ namespace Player
 
         public void GameOver()
         {
+            Cursor.lockState = CursorLockMode.None;
             deathScreen.SetActive(true);
             playerMov.enabled = false;
         }

@@ -10305,8 +10305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aoeRadius: {fileID: 1778219632541426906}
   golem: {fileID: 0}
+  breakDown: {fileID: 1111933567}
   golemScript: {fileID: 0}
-  hp: 3
+  hp: 5
   cooldown: 5
   particle: {fileID: 1927311828}
   damage: 2

@@ -19,9 +19,9 @@ namespace Player
         private bool _isHoldingGolemCore = false;
         private bool _isInPreview = false;
 
-        private bool _usePressed = false;
-        private bool _leftClickPressed = false;
-        private bool _rightClickPressed = false;
+        [SerializeField] private bool _usePressed = false;
+        [SerializeField] private bool _leftClickPressed = false;
+        [SerializeField] private bool _rightClickPressed = false;
         private bool _raycastExist = false;
 
         List<GameObject> inRangeGolems = new List<GameObject>();
@@ -148,9 +148,18 @@ namespace Player
                 else if (_leftClickPressed)
                 {
                     playerAnim.SetTrigger("LeftClick");
+
                     if (_hit.collider.CompareTag("Golem"))
                     {
                         _hit.transform.gameObject.GetComponent<Enemies.Golem>().HealtOf(HealValue);
+                    }
+                    else if (_hit.collider.CompareTag("Tesla"))
+                    {
+                        _hit.transform.gameObject.GetComponent<Traps.Tesla>().Heal(2);
+                    }
+                    else if (_hit.collider.CompareTag("Canon"))
+                    {
+                        _hit.transform.gameObject.GetComponent<Traps.Canon>().Heal(2);
                     }
                 }
                 else if (_rightClickPressed)
@@ -191,6 +200,11 @@ namespace Player
             }
 
             inRangeGolems.Clear();
+        }
+
+        public bool GetUsePress()
+        {
+            return _usePressed;
         }
     }
 }

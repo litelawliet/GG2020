@@ -28,5 +28,6 @@ namespace Traps
             _golemObject.GetNav().enabled = true;
             gameObject.SetActive(false);
         }
+
     }
 }

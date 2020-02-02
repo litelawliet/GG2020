@@ -18,6 +18,8 @@ namespace Traps
         [SerializeField] private float bulletSpeed = 100.0f;
         private List<GameObject> _enemies;
         private Quaternion _mLookRotation;
+        [SerializeField] private GameObject breakDown;
+        [SerializeField] private int hp;
         private bool _recovery = false;
         private float _timer;
 
@@ -29,56 +31,63 @@ namespace Traps
 
         void Update()
         {
-            // Find target
-            if (target == null)
+            if (hp <= 0)
             {
-                foreach (GameObject enemy in _enemies)
+                breakDown.SetActive(true);
+            }
+            // Find target
+            else
+            {
+                if (target == null)
                 {
-                    if (Vector3.Distance(enemy.transform.position, transform.position) <= range)
+                    foreach (GameObject enemy in _enemies)
                     {
-                        if (enemy.activeSelf)
+                        if (Vector3.Distance(enemy.transform.position, transform.position) <= range)
                         {
-                            target = enemy.gameObject;
+                            if (enemy.activeSelf)
+                            {
+                                target = enemy.gameObject;
 
-                            break;
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            if (target != null && target.gameObject.activeSelf == false)
-                target = null;
+                if (target != null && target.gameObject.activeSelf == false)
+                    target = null;
 
-            if (_recovery)
-            {
-                _timer += Time.deltaTime;
-                if (_timer >= cooldown)
+                if (_recovery)
                 {
-                    _recovery = false;
-                    _timer = 0.0f;
-                }
-            }
-
-            if (target != null)
-            {
-                _mLookRotation = Quaternion.LookRotation(target.transform.position - transform.position);
-                _mLookRotation.x = 0.0f;
-                _mLookRotation.z = 0.0f;
-
-                if (transform.rotation != _mLookRotation)
-                {
-                    transform.rotation =
-                        Quaternion.RotateTowards(transform.rotation, _mLookRotation,
-                            rotationSpeed * Time.deltaTime * -1.0f);
+                    _timer += Time.deltaTime;
+                    if (_timer >= cooldown)
+                    {
+                        _recovery = false;
+                        _timer = 0.0f;
+                    }
                 }
 
-                if (!_recovery)
+                if (target != null)
                 {
-                    Shoot();
-                    _recovery = true;
-                }
-            }
+                    _mLookRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                    _mLookRotation.x = 0.0f;
+                    _mLookRotation.z = 0.0f;
 
+                    if (transform.rotation != _mLookRotation)
+                    {
+                        transform.rotation =
+                            Quaternion.RotateTowards(transform.rotation, _mLookRotation,
+                                rotationSpeed * Time.deltaTime * -1.0f);
+                    }
+
+                    if (!_recovery)
+                    {
+                        Shoot();
+                        _recovery = true;
+                    }
+                }
+
+            }
             //canonAnim.SetBool("Yeet", false);
         }
 
@@ -89,6 +98,11 @@ namespace Traps
             GameObject bullet = Instantiate(bulletPrefab, positionBuller,
                 transform.rotation);
             bullet.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
+        }
+
+        public void Heal(int p_HealValue)
+        {
+            hp += p_HealValue;
         }
     }
 }
