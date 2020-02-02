@@ -130,7 +130,7 @@ namespace Player
                         trapToDrop = null;
                     }
                 }
-                else if (_leftClickPressed && !_isHoldingGolemCore)
+                else if (_leftClickPressed)
                 {
                     playerAnim.SetTrigger("LeftClick");
                     if (_hit.collider.CompareTag("Golem"))
