@@ -643,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 3887378654947813397}
   jumpHeight: 1.5
-  walkingSpeed: 6
+  walkingSpeed: 5
   sprintSpeed: 12
   groundDistance: 0.7
   initialFOV: 70
@@ -653,8 +653,14 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  audioClip: []
-  audioSource: {fileID: 0}
+  audioClip:
+  - {fileID: 8300000, guid: 9e4f2326d5175ac4097655b77f9f2d47, type: 3}
+  - {fileID: 8300000, guid: 1500ec334d0ed1c40934de4f1a482685, type: 3}
+  - {fileID: 8300000, guid: 33b4b3b8fb7d7d14d9b885aa09e057fb, type: 3}
+  - {fileID: 8300000, guid: 0083f3337b568da499eca0bb8e4da359, type: 3}
+  - {fileID: 8300000, guid: d800bdbbcd1aea841accc9dcf04c7d28, type: 3}
+  - {fileID: 8300000, guid: 16cf5e8902cabe444996013b664c5fc9, type: 3}
+  audioSource: {fileID: 1238989405}
 --- !u!143 &3887378655207267072
 CharacterController:
   m_ObjectHideFlags: 0
@@ -755,11 +761,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 33b4b3b8fb7d7d14d9b885aa09e057fb, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
