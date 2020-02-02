@@ -6,7 +6,8 @@ namespace Player
     public class PlayerHP : MonoBehaviour
     {
         [SerializeField] private int life = 10;
-
+        [SerializeField] private PlayerMovement playerMov;
+        [SerializeField] private GameObject deathScreen;
 
         void Start()
         {
@@ -30,10 +31,16 @@ namespace Player
             return life;
         }
 
-        void GameOver()
+        //void GameOver()
+        //{
+        //    Debug.Log("GAMEOVER");
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //}
+
+        public void GameOver()
         {
-            Debug.Log("GAMEOVER");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            deathScreen.SetActive(true);
+            playerMov.enabled = false;
         }
 
         private void OnTriggerEnter(Collider other)
