@@ -13,7 +13,7 @@ namespace Manager
         {
             for (int i = 0; i < 5; i++)
             {
-                Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 1.0f, Random.Range(-10.0f, 10.0f));
+                Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 6.0f, Random.Range(-10.0f, 10.0f));
                 golems.Add(Instantiate(golemPrefab, position, Quaternion.identity));
             }
         }

@@ -505,7 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  golemScrap: {fileID: 0}
+  golemScrap: {fileID: 2987139760567470323, guid: ffab78250eeca4240b14b63ddfa22039,
+    type: 3}
 --- !u!195 &238862078
 NavMeshAgent:
   m_ObjectHideFlags: 0
