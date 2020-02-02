@@ -10,7 +10,7 @@ namespace Manager
 
         void Start()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 0.0f, Random.Range(-10.0f, 10.0f));
                 golems.Add(Instantiate(golemPrefab, position, Quaternion.identity));

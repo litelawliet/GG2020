@@ -41,8 +41,8 @@ namespace Enemies
             {
                 _golemNavMesh.speed = 1;
                 transform.LookAt(player.transform.position);
-                golemAnim.SetTrigger("Attacc");
                 _triggered = false;
+                golemAnim.SetTrigger("Attacc");
             }
         }
 

@@ -804,6 +804,7 @@ GameObject:
   - component: {fileID: 8920657329609055206}
   - component: {fileID: 4518867846873002238}
   - component: {fileID: 1301247796960049036}
+  - component: {fileID: 541401888}
   m_Layer: 0
   m_Name: Penetrator
   m_TagString: Untagged
@@ -818,7 +819,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5591169782314691061}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.4670305, y: 1.905, z: -26.003666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -859,6 +860,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &541401888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5591169782314691061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce744ded303bd849aa6d54e3f1fe520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  bullet: {fileID: 0}
+  range: 50
+  rotationSpeed: 10
+  canonAnim: {fileID: 4518867846873002238}
+  gameManager: {fileID: 0}
 --- !u!1 &6118812321837155823
 GameObject:
   m_ObjectHideFlags: 0
