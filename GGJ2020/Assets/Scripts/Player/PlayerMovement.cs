@@ -50,18 +50,18 @@ namespace Player
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
-            if (x != 0 && z != 0)
-            {
-                if (!audioSource.isPlaying && !_isSprinting)
-                {
-                    audioSource.PlayOneShot(audioClip[2]);
-                }
-                else if (!audioSource.isPlaying && _isSprinting)
-                {
-                    audioSource.PlayOneShot(audioClip[1]);
-                }
+            //if (x != 0 && z != 0)
+            //{
+            //    if (!audioSource.isPlaying && !_isSprinting)
+            //    {
+            //        audioSource.PlayOneShot(audioClip[2]);
+            //    }
+            //    else if (!audioSource.isPlaying && _isSprinting)
+            //    {
+            //        audioSource.PlayOneShot(audioClip[1]);
+            //    }
 
-            }
+            //}
 
 
             if (Input.GetKey(KeyCode.LeftShift))

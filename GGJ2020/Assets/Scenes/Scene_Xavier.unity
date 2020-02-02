@@ -1581,6 +1581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_frame
       objectReference: {fileID: 0}
+    - target: {fileID: 4158544378710341936, guid: 539a4c22b6c14f24e8ee1d8a67c3fa72,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sortie
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539a4c22b6c14f24e8ee1d8a67c3fa72, type: 3}
 --- !u!33 &3927717591202681971
@@ -2785,11 +2790,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1325717488813652451, guid: 541c2ee66be86a144aa636b10fd40ae7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -98
+      objectReference: {fileID: 0}
     - target: {fileID: 8580438329700337674, guid: 541c2ee66be86a144aa636b10fd40ae7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 766384176}
+    - target: {fileID: 8580438329700337675, guid: 541c2ee66be86a144aa636b10fd40ae7,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8580438329700337675, guid: 541c2ee66be86a144aa636b10fd40ae7,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8580438329700337675, guid: 541c2ee66be86a144aa636b10fd40ae7,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5754717
+      objectReference: {fileID: 0}
     - target: {fileID: 8580438330255603466, guid: 541c2ee66be86a144aa636b10fd40ae7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2899,6 +2924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8580438330255603470, guid: 541c2ee66be86a144aa636b10fd40ae7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 541c2ee66be86a144aa636b10fd40ae7, type: 3}
