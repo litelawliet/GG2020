@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 2092514968939103816}
   m_Layer: 8
   m_Name: mur_2_casser_bis
-  m_TagString: Ground
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

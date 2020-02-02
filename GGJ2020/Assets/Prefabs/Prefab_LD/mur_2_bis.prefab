@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8983024709709556972}
   m_Layer: 8
   m_Name: mur_2_bis
-  m_TagString: Ground
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
