@@ -124,6 +124,8 @@ namespace Player
                             if (distance <= pushRange)
                             {
                                 inRangeGolems.Add(golem);
+                                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -100.0f));
+
                             }
                         }
                     }
@@ -143,11 +145,6 @@ namespace Player
 
                 _raycastExist = Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
                     distanceToPick);
-            }
-
-            foreach (GameObject golem in inRangeGolems)
-            {
-                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -10.0f));
             }
 
             inRangeGolems.Clear();
