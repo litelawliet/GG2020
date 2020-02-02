@@ -99,5 +99,10 @@ namespace Enemies
         {
             return _golemNavMesh;
         }
+
+        public void HealtOf(int pHealValue)
+        {
+            hp += pHealValue;
+        }
     }
 }
