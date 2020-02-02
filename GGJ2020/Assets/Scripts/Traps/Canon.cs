@@ -13,7 +13,7 @@ namespace Traps
         [SerializeField] private float range = 50f;
         [SerializeField] private float rotationSpeed = 30.0f;
         [SerializeField] private Animator canonAnim;
-        [SerializeField] private Manager.GameManager gameManager;
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private float cooldown = 2.0f;
         [SerializeField] private float bulletSpeed = 100.0f;
         private List<GameObject> _enemies;

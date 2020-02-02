@@ -1157,7 +1157,7 @@ MonoBehaviour:
   rotationSpeed: 50
   canonAnim: {fileID: 4518867846873002238}
   gameManager: {fileID: 0}
-  cooldown: 2
+  cooldown: 4
   bulletSpeed: 100
 --- !u!54 &257849467
 Rigidbody:

@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 365768594}
   - component: {fileID: 365768596}
   - component: {fileID: 365768595}
-  - component: {fileID: 8296172668631443053}
   - component: {fileID: 8296172668631443054}
   m_Layer: 0
   m_Name: Golem
@@ -550,21 +549,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &8296172668631443053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580715232024382986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60eff84eab2728b4c9b558d0d10b1889, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 5
-  golemScrap: {fileID: 2987139760567470323, guid: ffab78250eeca4240b14b63ddfa22039,
-    type: 3}
 --- !u!195 &8296172668631443054
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -695,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHit: 0
-  golemScript: {fileID: 8296172668631443053}
+  golemScript: {fileID: 0}
 --- !u!1 &5342400815707389213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHit: 0
-  golemScript: {fileID: 8296172668631443053}
+  golemScript: {fileID: 0}
 --- !u!1 &8239784476954520472
 GameObject:
   m_ObjectHideFlags: 0
