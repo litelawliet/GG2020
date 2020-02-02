@@ -70,7 +70,6 @@ namespace Enemies
             }
             else if (other.CompareTag("Ammo"))
             {
-                Debug.Log("ammo trigger");
                 GolemDeath();
             }
         }

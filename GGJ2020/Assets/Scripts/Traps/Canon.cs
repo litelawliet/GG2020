@@ -14,11 +14,12 @@ namespace Traps
         [SerializeField] private float rotationSpeed = 30.0f;
         [SerializeField] private Animator canonAnim;
         [SerializeField] private Manager.GameManager gameManager;
+        [SerializeField] private float cooldown = 2.0f;
+        [SerializeField] private float bulletSpeed = 100.0f;
         private List<GameObject> _enemies;
         private Quaternion _mLookRotation;
         private bool _recovery = false;
         private float _timer;
-        [SerializeField] private float cooldown = 2.0f;
 
         void Start()
         {
@@ -84,7 +85,7 @@ namespace Traps
             Vector3 positionBuller = transform.GetChild(1).position;
             GameObject bullet = Instantiate(bulletPrefab, positionBuller,
                 transform.rotation);
-            bullet.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * 100, ForceMode.Impulse);
+            bullet.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
         }
     }
 }
