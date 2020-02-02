@@ -6,26 +6,30 @@ namespace Enemies
 {
     public class Golem : MonoBehaviour
     {
-        [SerializeField] private int hp;
+        [SerializeField] private int hp = 5;
         [SerializeField] private GameObject golemScrap;
-        [SerializeField] private GameObject player = null;
-        [SerializeField] private Animator golemAnim = null;
-        [SerializeField] private GolemHitbox golemHitbox = null;
-
+        private GameObject player = null;
+        private GolemHitbox golemHitbox = null;
+        
+        
         private bool _triggered;
+        private Animator golemAnim;
+
+        private bool _wallHit;
         private NavMeshAgent _golemNavMesh;
+        private float distanceMinForAttack = 7.0f;
 
         void Start()
         {
             _golemNavMesh = GetComponent<NavMeshAgent>();
+            golemAnim = GetComponent<Animator>();
+            player = GameObject.FindGameObjectWithTag("Player");
+            golemHitbox = GetComponentInChildren<GolemHitbox>();
+            _golemNavMesh.Warp(transform.position);
         }
 
         void Update()
         {
-            if (!_triggered)
-            {
-                _golemNavMesh.speed = 6;
-            }
             if (_golemNavMesh.isActiveAndEnabled)
             {
                 _golemNavMesh.SetDestination(player.transform.position);
@@ -34,36 +38,49 @@ namespace Enemies
             if (hp <= 0)
             {
                 //Instantiate(golemScrap, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                Instantiate(golemScrap, transform.position, Quaternion.identity);
             }
 
             if (_triggered)
             {
-                _golemNavMesh.speed = 1;
                 transform.LookAt(player.transform.position);
                 _triggered = false;
-                golemAnim.SetTrigger("Attacc");
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerMovement>())
+            if (other.gameObject.CompareTag("Ground"))
+            {}
+            else if (other.gameObject.CompareTag("Player"))
             {
                 _triggered = true;
+                golemAnim.SetTrigger("Attacc");
+            }
+            else if (other.gameObject.CompareTag("Environment"))
+            {
+                _wallHit = true;
+                ReduceHP();
+            }
+            else
+            {
+                ReduceHP();
             }
         }
 
         public void ReduceHP()
         {
-            if (golemHitbox.IsWallHit())
+            if (_wallHit)
             {
                 hp -= 2;
-                golemHitbox.SetWallHit(false);
+                _wallHit = false;
+                Debug.Log(hp);
             }
             else
             {
                 hp--;
+                Debug.Log(hp);
             }
         }
 
