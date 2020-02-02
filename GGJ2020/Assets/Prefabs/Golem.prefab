@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   golemScrap: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 4462369934741174789, guid: 0c1336433afb7124ba8fee839178809d, type: 3}
   golemAnim: {fileID: 603105252029582183}
   golemHitbox: {fileID: 603105252426352097}
 --- !u!54 &603105252029582238
@@ -151,7 +151,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.52
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!135 &603105252029582180

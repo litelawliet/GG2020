@@ -6,12 +6,10 @@ namespace Manager
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameObject golemPrefab = null;
-        private List<GameObject> golems = null;
+        private List<GameObject> golems = new List<GameObject>();
 
         void Start()
         {
-            golems = new List<GameObject>();
-
             for (int i = 0; i < 5; i++)
             {
                 Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 0.0f, Random.Range(-10.0f, 10.0f));

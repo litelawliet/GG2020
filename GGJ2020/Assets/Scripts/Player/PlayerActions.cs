@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Manager;
+using UnityEngine;
 using UnityEngine.XR;
 
 namespace Player
@@ -7,6 +9,9 @@ namespace Player
     {
         [SerializeField] private GameObject trapToDrop = null;
         [SerializeField] private float distanceToPick = 3.5f;
+        [SerializeField] private GameManager manager = null;
+        [SerializeField] private float pushRange = 10.0f;
+        [SerializeField] private float pushForce = 1.0f;
 
         private RaycastHit _hit;
         private Camera _camera;
@@ -18,9 +23,13 @@ namespace Player
         private bool _rightClickPressed = false;
         private bool _raycastExist = false;
 
+        List<GameObject> inRangeGolems = new List<GameObject>();
+
+
         private void Start()
         {
             _camera = GetComponentInChildren<Camera>();
+            manager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         }
 
         private void Update()
@@ -34,7 +43,7 @@ namespace Player
                 _leftClickPressed = false;
             else if (Input.GetMouseButtonDown(0))
                 _leftClickPressed = true;
-            
+
             if (Input.GetMouseButtonUp(1))
                 _rightClickPressed = false;
             else if (Input.GetMouseButtonDown(1))
@@ -42,7 +51,7 @@ namespace Player
 
             if (_raycastExist)
             {
-                if (_hit.transform.tag.Equals("Pickable"))
+                if (_hit.transform.gameObject.CompareTag("Pickable"))
                 {
                     if (_usePressed)
                     {
@@ -69,7 +78,7 @@ namespace Player
                     }
                 }
 
-                if (_hit.transform.tag.Equals("Ground"))
+                if (_hit.transform.gameObject.CompareTag("Ground"))
                 {
                     if (trapToDrop != null)
                         trapToDrop.transform.position = _hit.point;
@@ -105,6 +114,21 @@ namespace Player
                 else if (_rightClickPressed)
                 {
                     // Push enemies
+                    // Find golems inside the range of push
+                    float distance = float.MaxValue;
+                    if (inRangeGolems.Count == 0)
+                    {
+                        foreach (GameObject golem in manager.GetGolems())
+                        {
+                            distance = Vector3.Distance(transform.position, golem.transform.position);
+                            if (distance <= pushRange)
+                            {
+                                inRangeGolems.Add(golem);
+                            }
+                        }
+                    }
+
+                    manager.GetGolems();
                 }
             }
         }
@@ -120,6 +144,13 @@ namespace Player
                 _raycastExist = Physics.Raycast(transform.position, cameraToCursorRay.direction, out _hit,
                     distanceToPick);
             }
+
+            foreach (GameObject golem in inRangeGolems)
+            {
+                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -10.0f));
+            }
+
+            inRangeGolems.Clear();
         }
     }
 }
