@@ -46,6 +46,9 @@ namespace Traps
                 }
             }
 
+            if (target != null && target.gameObject.activeSelf == false)
+                target = null;
+
             if (_recovery)
             {
                 _timer += Time.deltaTime;
