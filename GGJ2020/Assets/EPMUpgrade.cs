@@ -21,6 +21,8 @@ public class EPMUpgrade : MonoBehaviour
     public void UpgradeToEPM()
     {
         gameObject.SetActive(false);
+        Vector3 positionCanon = transform.position;
+        positionCanon.y += 10.0f;
         if (epmPrefab != null)
             Instantiate(epmPrefab, transform.position, Quaternion.identity);
         

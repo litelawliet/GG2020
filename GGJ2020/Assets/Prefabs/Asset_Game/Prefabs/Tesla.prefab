@@ -10252,7 +10252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb62525b2f3c9d342bb005125b10a7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  epmPrefab: {fileID: 0}
+  epmPrefab: {fileID: 8212726220524286320, guid: c0aa58a39dbbdf6468de123aafddaa6e,
+    type: 3}
 --- !u!208 &6837888740277186488
 NavMeshObstacle:
   m_ObjectHideFlags: 0

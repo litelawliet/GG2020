@@ -45,7 +45,7 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("GolemProjectile"))
+            if (other.gameObject.CompareTag("Golem"))
             {
                 ReduceLifeOf(1);
             }
