@@ -49,6 +49,14 @@ namespace Traps
            
         }
 
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Golem"))
+            {
+                particle.SetActive(false);
+            }
+        }
+
         private void Tazzing()
         {
             timer += Time.deltaTime;
@@ -64,6 +72,16 @@ namespace Traps
         {
             golemScript.ReduceHP(damage);
             Debug.Log(hp);
+        }
+
+        public void ReduceHp(int p_damage)
+        {
+            hp -= p_damage;
+        }
+
+        public int GetHP()
+        {
+            return hp;
         }
 
         public void Heal(int p_HealValue)

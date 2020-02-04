@@ -61,7 +61,7 @@ namespace Enemies
             Instantiate(golemScrap, transform.position, Quaternion.identity);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Ground"))
             {}

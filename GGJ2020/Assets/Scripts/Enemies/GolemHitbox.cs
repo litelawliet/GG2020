@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Traps;
 
 namespace Enemies
 {
@@ -7,6 +8,10 @@ namespace Enemies
         [SerializeField] private bool wallHit;
         [SerializeField] private Golem golemScript;
         [SerializeField] private Player.PlayerHP playerHP;
+        [SerializeField] private Canon canon;
+        [SerializeField] private Tesla tesla;
+
+
 
         private void Start()
         {
@@ -26,10 +31,24 @@ namespace Enemies
                 wallHit = true;
                 golemScript.ReduceHP();
             }
+            else if (collider.CompareTag("Canon"))
+            {
+                golemScript.ReduceHP();
+                canon.ReduceHp(1);
+                Debug.Log("hp canon" + canon.GetHP());
+            }
+            else if (collider.CompareTag("Tesla"))
+            {
+                golemScript.ReduceHP();
+                canon.ReduceHp(1);
+                Debug.Log("Hp tesla" + tesla.GetHP());
+            }
             else
             {
                 golemScript.ReduceHP();
             }
+
+
         }
 
         public bool IsWallHit()

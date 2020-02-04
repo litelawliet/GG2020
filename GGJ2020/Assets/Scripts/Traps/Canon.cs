@@ -106,6 +106,17 @@ namespace Traps
             bullet.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * bulletSpeed, ForceMode.Impulse);
         }
 
+        public void ReduceHp(int p_damage)
+        {
+            hp -= p_damage;
+
+        }
+
+        public int GetHP()
+        {
+            return hp;
+        }
+
         public void Heal(int p_HealValue)
         {
             hp += p_HealValue;

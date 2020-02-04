@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753450024569490391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16, y: 2.72, z: -2.59}
+  m_LocalPosition: {x: -0.16, y: 2.72, z: -5.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8920657329609055206}
@@ -1123,11 +1123,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4432990680342719960, guid: 3209540d7ef8ff14c8f42984b63d9d09,
     type: 3}
   range: 50
-  rotationSpeed: 200
+  rotationSpeed: 360
   canonAnim: {fileID: 4518867846873002238}
   gameManager: {fileID: 0}
   cooldown: 8
-  bulletSpeed: 500
+  bulletSpeed: 200
   breakDown: {fileID: 342852246577063518}
   hp: 5
 --- !u!54 &257849467

@@ -171,8 +171,7 @@ namespace Player
                             if (distance <= pushRange)
                             {
                                 inRangeGolems.Add(golem);
-                                golem.GetComponent<Rigidbody>()
-                                    .AddForce(golem.transform.forward * (pushForce * -100.0f));
+                                golem.GetComponent<Rigidbody>().AddForce(golem.transform.forward * (pushForce * -100.0f));
                             }
                         }
                     }

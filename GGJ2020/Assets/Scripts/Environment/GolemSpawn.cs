@@ -13,7 +13,6 @@ public class GolemSpawn : MonoBehaviour
     void ElevatorSpawnGolem()
     {
         elevatorAnim.SetBool("isSpawning", true);
-        golems.Add(Instantiate(golemPrefab, golemSpawnPos.position, Quaternion.identity));
         StartCoroutine(WaitForAnimEnd(4));
     }
 
@@ -21,6 +20,7 @@ public class GolemSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
         //gameManager.SpawnGolems();
+        golems.Add(Instantiate(golemPrefab, golemSpawnPos.position, Quaternion.identity));
         gameManager.SetGolemList(golems);
         elevatorAnim.SetBool("isSpawning", false);
     }
@@ -33,7 +33,7 @@ public class GolemSpawn : MonoBehaviour
     void Update()
     {
         
-
+        // si il ne reste plus qu'un golem sur la list tous les spawn font pop 1 golem
 
 
     }
