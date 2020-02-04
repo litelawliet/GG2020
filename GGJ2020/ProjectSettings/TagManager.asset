@@ -17,6 +17,7 @@ TagManager:
   - Balance
   - Fire
   - Sortie
+  - Particle
   layers:
   - Default
   - TransparentFX

@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf0f0a775491a84abe0d26ed1818e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 3796673878952521943}
+  particle: {fileID: 3894660066868931661}
   freezeTime: 5
 --- !u!114 &8212726220524286319
 MonoBehaviour:
@@ -688,12 +688,6 @@ GameObject:
 --- !u!4 &3891432021793979671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3895351113750521729}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3796673878952521943 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000010585806678, guid: 96730f8640590934eacb6f860058e7f9,
     type: 3}
   m_PrefabInstance: {fileID: 3895351113750521729}
   m_PrefabAsset: {fileID: 0}

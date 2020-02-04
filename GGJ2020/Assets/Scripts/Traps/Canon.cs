@@ -95,7 +95,6 @@ namespace Traps
                 }
 
             }
-            //canonAnim.SetBool("Yeet", false);
         }
 
         private void Shoot()

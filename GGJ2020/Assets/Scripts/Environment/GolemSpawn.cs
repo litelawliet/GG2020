@@ -13,14 +13,15 @@ public class GolemSpawn : MonoBehaviour
     void ElevatorSpawnGolem()
     {
         elevatorAnim.SetBool("isSpawning", true);
-        gameManager.SpawnGolems();
-        //golems.Add(Instantiate(golemPrefab, golemSpawnPos.position, Quaternion.identity));
+        golems.Add(Instantiate(golemPrefab, golemSpawnPos.position, Quaternion.identity));
         StartCoroutine(WaitForAnimEnd(4));
     }
 
     IEnumerator WaitForAnimEnd(int sec)
     {
         yield return new WaitForSeconds(sec);
+        //gameManager.SpawnGolems();
+        gameManager.SetGolemList(golems);
         elevatorAnim.SetBool("isSpawning", false);
     }
 

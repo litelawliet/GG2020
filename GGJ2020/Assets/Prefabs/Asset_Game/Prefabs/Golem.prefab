@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHit: 0
   golemScript: {fileID: -5905781624324723069}
+  playerHP: {fileID: 0}
 --- !u!64 &594767214563899933
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -561,10 +562,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!195 &8296172668631443054
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -792,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHit: 0
   golemScript: {fileID: 0}
+  playerHP: {fileID: 0}
 --- !u!1 &5342400815707389213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHit: 0
   golemScript: {fileID: -5905781624324723069}
+  playerHP: {fileID: 0}
 --- !u!1 &8239784476954520472
 GameObject:
   m_ObjectHideFlags: 0

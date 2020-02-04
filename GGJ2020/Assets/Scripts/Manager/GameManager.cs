@@ -15,21 +15,21 @@ namespace Manager
         private List<GameObject> golems = new List<GameObject>();
         [SerializeField] private List<Transform> positions = new List<Transform>();
 
-        public void SpawnGolems()
-        {
-            //Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), 6.0f, Random.Range(-10.0f, 10.0f));
-            if (positions.Contains(positions[0]))
-            {
-                for (int i = 0; i < positions.LastIndexOf(positions[i]); i++)
-                {
-                    golems.Add(Instantiate(golemPrefab, positions[i].position, Quaternion.identity));
-                    //golems.Add(Instantiate(golemPrefab, positions[1].position, Quaternion.identity));
-                    //golems.Add(Instantiate(golemPrefab, positions[2].position, Quaternion.identity));
-                    //golems.Add(Instantiate(golemPrefab, positions[3].position, Quaternion.identity));
-                    //golems.Add(Instantiate(golemPrefab, positions[4].position, Quaternion.identity));
+        //public void SpawnGolems()
+        //{
+        //    if (positions.Contains(positions[0]))
+        //    {
+        //        for (int i = 0; i < positions.LastIndexOf(positions[i]); i++)
+        //        {
+        //            golems.Add(Instantiate(golemPrefab, positions[i].position, Quaternion.identity));
 
-                }
-            }
+        //        }
+        //    }
+        //}
+
+        public void SetGolemList(List<GameObject> p_List)
+        {
+            golems = p_List;
         }
 
         public void Update()
