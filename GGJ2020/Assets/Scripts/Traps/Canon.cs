@@ -22,15 +22,22 @@ namespace Traps
         [SerializeField] private int hp;
         private bool _recovery = false;
         private float _timer;
+        private int HPmax;
 
         void Start()
         {
+            HPmax = hp;
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             _enemies = gameManager.GetGolems();
         }
 
         void Update()
         {
+            if (hp >= HPmax)
+            {
+                hp = HPmax;
+            }
+
             if (hp <= 0)
             {
                 breakDown.SetActive(true);

@@ -9,12 +9,14 @@ namespace Traps
         [SerializeField] private ParticleSystem particle = null;
         [SerializeField] private uint freezeTime = 5u;
         private Golem _golemObject = null;
-    
+
+
+
         private void OnTrigger(Collider other)
         {
             if (other.CompareTag("Golem"))
             {
-                Debug.Log("Find golem on EPM");
+                Debug.Log("Find golem on EMP");
                 _golemObject = other.GetComponent<Golem>();
                 particle.Play();
                 _golemObject.GetNav().enabled = false;

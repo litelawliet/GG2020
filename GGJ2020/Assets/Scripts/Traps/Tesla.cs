@@ -13,11 +13,23 @@ namespace Traps
         public int hp;
         float timer;
         public int cooldown;
+        private int HPmax;
         public GameObject particle;
         [SerializeField] private int damage = 2;
 
+
+        private void Start()
+        {
+            HPmax = hp;
+        }
+
         void Update()
         {
+            if (hp >= HPmax)
+            {
+                hp = HPmax;
+            }
+
             if (hp <= 0)
             {
                 breakDown.SetActive(true);

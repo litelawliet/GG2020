@@ -31,12 +31,6 @@ namespace Player
             return life;
         }
 
-        //void GameOver()
-        //{
-        //    Debug.Log("GAMEOVER");
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //}
-
         public void GameOver()
         {
             Cursor.lockState = CursorLockMode.None;
@@ -44,12 +38,12 @@ namespace Player
             playerMov.enabled = false;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Golem"))
-            {
-                ReduceLifeOf(1);
-            }
-        }
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.gameObject.CompareTag("Golem"))
+        //    {
+        //        ReduceLifeOf(1);
+        //    }
+        //}
     }
 }

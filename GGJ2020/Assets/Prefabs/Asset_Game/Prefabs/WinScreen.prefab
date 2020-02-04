@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6123517496529645042}
   - component: {fileID: 4316175858838599292}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6123517496529645042
 Transform:
   m_ObjectHideFlags: 0
@@ -91,13 +91,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1325717488813652451}
   - component: {fileID: 1314176787664441174}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1325717488813652451
 Transform:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5110942461818786320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -85, y: 33.45028, z: 0}
+  m_LocalPosition: {x: -98, y: 33.45028, z: 0}
   m_LocalScale: {x: 52.674667, y: 52.674667, z: 52.674667}
   m_Children: []
   m_Father: {fileID: 8580438330663904090}
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

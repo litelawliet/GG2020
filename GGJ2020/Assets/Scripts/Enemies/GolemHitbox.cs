@@ -6,6 +6,7 @@ namespace Enemies
     {
         [SerializeField] private bool wallHit;
         [SerializeField] private Golem golemScript;
+        [SerializeField] private Player.PlayerHP playerHP;
 
         private void Start()
         {
@@ -15,8 +16,10 @@ namespace Enemies
         private void OnTriggerEnter(Collider collider)
         {
             wallHit = false;
+
             if (collider.gameObject.CompareTag("Player"))
             {
+                playerHP.ReduceLifeOf(1);
             }
             else if (collider.gameObject.CompareTag("Environment"))
             {

@@ -7,6 +7,7 @@ namespace Enemies
     public class Golem : MonoBehaviour
     {
         [SerializeField] private int hp = 5;
+        private int hpMax;
         [SerializeField] private GameObject golemScrap;
         private GameObject player = null;
         private GolemHitbox golemHitbox = null;
@@ -21,6 +22,7 @@ namespace Enemies
 
         void Start()
         {
+            hpMax = hp;
             _golemNavMesh = GetComponent<NavMeshAgent>();
             golemAnim = GetComponent<Animator>();
             player = GameObject.FindGameObjectWithTag("Player");
@@ -33,6 +35,11 @@ namespace Enemies
             if (_golemNavMesh.isActiveAndEnabled)
             {
                 _golemNavMesh.SetDestination(player.transform.position);
+            }
+
+            if (hp >= hpMax)
+            {
+                hp = hpMax;
             }
 
             if (hp <= 0)
@@ -103,6 +110,7 @@ namespace Enemies
         public void HealtOf(int pHealValue)
         {
             hp += pHealValue;
+
         }
     }
 }
